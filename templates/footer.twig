@@ -1,3 +1,59 @@
-<footer>
-    
+<footer class="bg-black text-white relative overflow-hidden" >
+    <div class="container pt-20 pb-10 relative z-10"> 
+
+        {# Part 1 #}
+        <div class="font-sans text-btn uppercase leading-none grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-4">
+            {# Logo #}
+            <div class="md:col-span-2 lg:col-span-1">
+                <a href="{{site.url}}" title="Studio Selini" class="hover:opacity-80"><img src="{{theme.uri}}/src/images/logo-studio-selini-white.svg" alt="Logo Studio Selini" class="w-36"></a>
+            </div>
+            {# Adress #}
+            <div class="grid gap-2">
+                {% if options.adress.street %}
+                    <p>{{options.adress.street}}</p>
+                {% endif %}
+                {% if options.adress.zip_code or options.adress.city %}
+                    <p>{{options.adress.zip_code}} {{options.adress.city}}</p>
+                {% endif %}
+                {% if options.email %}
+                    <p><a href="mailto:{{options.email}}" class="hover:text-pink">{{options.email}}</a></p>
+                {% endif %}
+                {% if options.phone %}
+                    <p>{{options.phone}}</p>
+                {% endif %}
+            </div>
+            {# Menu #}
+            <div class="md:ml-auto md:text-right lg:col-span-2">
+                {% if menu.items %}
+                    <ul class="grid grid-cols-2 gap-4">
+                        {% for item in menu.items %}
+                            <li>
+                                <a href="{{ item.link }}" class="hover:text-pink">{{ item.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+
+        {# Part 2 #}
+        <div class="font-serif text-body-s grid gap-2 mt-20 md:grid-cols-3 lg:grid-cols-4 lg:gap-4">
+            <div>
+                <p>© Studio Selíni - {{ 'now' | date('Y') }}</p>
+            </div>
+            <div class="flex gap-6 md:justify-center lg:justify-start">
+                <p><a href="" class="hover:text-pink">Instagram</a></p>
+                <p><a href="" class="hover:text-pink">Mentions légales</a></p>
+            </div>
+            <div class="flex gap-2 mt-20 md:mt-0 md:ml-auto lg:col-span-2">
+                <p>Site conçu par </p>
+                <a href="https://bemy.studio" target="_blank" title="Bemy Studio - Webdesign Identité"><img class="w-12 hover:opacity-80" src="{{theme.uri}}/src/images/logo-bemy-studio.svg" alt="Bemy Studio"></a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="hidden lg:block absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
+        <img src="{{theme.uri}}/src/images/mandala.svg" alt="" class="absolute w-full h-full object-cover object-top opacity-[4%]">
+    </div>
 </footer>

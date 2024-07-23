@@ -1,0 +1,5 @@
+.site-header {
+	.current-menu-item {
+		@apply relative after:hidden after:absolute lg:after:block after:w-1 after:h-1 after:rounded-full after:bg-black after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:translate-y-3;
+	}
+}

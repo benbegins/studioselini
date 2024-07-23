@@ -3,4 +3,6 @@
 $context          = Timber::context();
 $context['posts'] = new Timber\PostQuery();
 
-Timber::render( 'pages/index.twig', $context );
+
+
+Timber::render( 'pages/home.twig', $context );

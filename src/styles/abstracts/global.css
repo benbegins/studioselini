@@ -1,12 +1,25 @@
-body {
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+::selection {
+	@apply bg-terracotta text-white;
+}
 
-	@apply bg-white text-black;
+body {
+	@apply bg-white text-black font-serif text-body-m;
 
 	&.admin-bar {
 		.site-header {
-			top: 32px;
+			top: 46px;
+
+			@media screen and (min-width: 783px) {
+				top: 32px;
+			}
 		}
 	}
+}
+
+.container {
+	@apply max-w-[1500px];
+}
+
+a {
+	@apply transition-colors duration-200;
 }

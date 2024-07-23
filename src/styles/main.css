@@ -4,3 +4,10 @@
 
 /* Abstracts */
 @import "./abstracts/global";
+@import "./abstracts/text";
+@import "./abstracts/utils";
+@import "./abstracts/images";
+
+/* Components */
+@import "./components/header";
+@import "./components/btns";

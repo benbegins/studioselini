@@ -1,13 +1,21 @@
+import { gsap } from "gsap"
+
 function Menu(props) {
 	return {
 		siteHeader: null,
 		menuOpen: false,
 		submenuOpen: false,
+		scrollPosition: 0,
+		displayMenu: true,
+		menuIsScrolling: false,
 
 		toggleMenu() {
 			this.menuOpen = !this.menuOpen
 
-			if (!this.menuOpen) {
+			if (this.menuOpen) {
+				document.body.style.overflow = "hidden"
+			} else {
+				document.body.style.overflow = "auto"
 				this.closeAllSubmenus()
 			}
 		},
@@ -16,15 +24,45 @@ function Menu(props) {
 			this.siteHeader = el
 
 			window.addEventListener("scroll", () => {
-				if (window.scrollY > 50) {
-					el.classList.add("is-scrolling")
+				// Display header on scroll up, hide on scroll down
+				if (window.scrollY > 100) {
+					// Set menuIsScrolling to true
+					this.menuIsScrolling = true
+					// Toggle header on scroll direction
+					if (window.scrollY < this.scrollPosition) {
+						this.displayMenu !== true ? this.toggleHeader(el, true) : null
+					} else {
+						this.displayMenu !== false ? this.toggleHeader(el, false) : null
+					}
 				} else {
-					el.classList.remove("is-scrolling")
+					// Set menuIsScrolling to false
+					this.menuIsScrolling = false
 				}
+
+				this.scrollPosition = window.scrollY
+
 				if (this.submenuOpen) {
 					this.closeAllSubmenus()
 				}
 			})
+		},
+
+		toggleHeader(el, state) {
+			this.displayMenu = state
+
+			if (this.displayMenu) {
+				gsap.to(el, {
+					duration: 0.5,
+					y: 0,
+					ease: "power2.out",
+				})
+			} else {
+				gsap.to(el, {
+					duration: 0.5,
+					y: -el.offsetHeight,
+					ease: "power2.out",
+				})
+			}
 		},
 
 		toggleSubmenu(el) {

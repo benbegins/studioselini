@@ -1,0 +1,29 @@
+/* 
+ *  Padding section 
+*/
+/* :root {
+	--section-width-mobile: 5rem;
+	--section-width-desktop: 9rem;
+	--section-width-clamp: clamp(5rem, 3.5915rem + 6.0094vw, 9rem);
+}
+.pt-section {
+	padding-top: var(--section-width-mobile);
+	padding-top: var(--section-width-clamp);
+
+	@media screen and (min-width: 1024px) {
+		padding-top: var(--section-width-desktop);
+		padding-top: var(--section-width-clamp);
+	}
+}
+.pb-section {
+	padding-bottom: var(--section-width-mobile);
+	padding-bottom: var(--section-width-clamp);
+
+	@media screen and (min-width: 1024px) {
+		padding-bottom: var(--section-width-desktop);
+		padding-bottom: var(--section-width-clamp);
+	}
+}
+.py-section {
+	@apply pt-section pb-section;
+} */

@@ -1,0 +1,27 @@
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-variation-settings: "wght" 200, "opsz" 500;
+
+	@apply font-serif;
+}
+
+.font-sans {
+	font-variation-settings: "wdth" 87, "wght" 300;
+}
+
+.font-serif {
+	font-variation-settings: "wght" 200, "opsz" 500;
+}
+
+.font-titling-subhead {
+	font-variation-settings: "opsz" 0, "wght" 200;
+}
+
+.font-titling-headline {
+	font-variation-settings: "opsz" 400, "wght" 400;
+}
+
+.font-titling-display {
+	font-variation-settings: "opsz" 750, "wght" 400;
+}

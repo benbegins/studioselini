@@ -1,0 +1,15 @@
+.btn__shape {
+	@apply hidden lg:block absolute w-full h-full top-0 left-0 -z-10;
+}
+
+.btn-secondary:hover {
+	@apply text-white;
+}
+
+.btn-primary .btn__shape {
+	@apply fill-black;
+}
+
+.btn-secondary .btn__shape {
+	@apply fill-terracotta;
+}

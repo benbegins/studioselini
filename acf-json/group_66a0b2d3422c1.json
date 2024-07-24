@@ -1,0 +1,65 @@
+{
+    "key": "group_66a0b2d3422c1",
+    "title": "Equipe",
+    "fields": [
+        {
+            "key": "field_66a0b2e607387",
+            "label": "Tags",
+            "name": "tags",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Séparés par des virgules",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Vinyasa, pilate, senior",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66a0b2d307386",
+            "label": "Présentation",
+            "name": "presentation",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "teacher"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1721807683
+}

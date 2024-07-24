@@ -1,0 +1,38 @@
+<section class="section-reviews pb-section" v-scope="Reviews()" @vue:mounted="initReviews($el)">
+    <div class="relative -my-16">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div v-for="review in reviews" class="swiper-slide py-16">
+                    <div class="bg-[#FFFFFF] rounded-2xl shadow-[0_20px_40px_0_rgba(27,19,16,0.06)] p-6 grid gap-4 lg:w-2/3 lg:mx-auto lg:py-8 lg:px-20 xl:px-24 2xl:w-[calc(1536px*0.66)]">
+                        {# Rating #}
+                        <div class="flex items-center lg:justify-center">
+                            <span v-for="star in review.rating">
+                                <img src="{{theme.uri}}/src/images/rating-star.svg" class="w-5 h-5" alt="">
+                            </span>
+                        </div>
+                        {# Text #}
+                        <p v-text="review.text" class="font-sans lg:text-center"></p>
+                        {# Author #}
+                        <div class="lg:text-center">
+                            <img :src="review.profile_photo_url" alt="review.author_name" class="w-10 h-10 lg:mx-auto">
+                            <p v-text="review.author_name" class="font-sans font-bold leading-tight mt-2"></p>
+                            <p v-text="review.relative_time_description" class="font-sans text-body-s opacity-40 leading-none"></p>
+                        </div>
+                        {# Logo Google #}
+                        <a href="https://g.co/kgs/KSL1xDz" target="_blank" title="Avis Google"><img src="{{theme.uri}}/src/images/logo-google.svg" alt="Google" class="w-20 lg:mx-auto"></a>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="hidden lg:flex max-w-screen-2xl mx-auto absolute z-10 top-1/2 left-1/2 items-center justify-between -translate-x-1/2 -translate-y-1/2 w-full px-12 xl:px-16">
+                <div class="button-prev relative left-[11%] cursor-pointer hover:opacity-70">
+                    <img src="{{theme.uri}}/src/images/icon-arrow.svg" alt="Icon arrow" class="w-5 h-5 rotate-180">
+                </div>
+                <div class="button-next relative right-[11%] cursor-pointer hover:opacity-70">
+                    <img src="{{theme.uri}}/src/images/icon-arrow.svg" alt="Icon arrow" class="w-5 h-5">
+                </div>
+            </div>
+        </div>
+        <div class="slider-pagination"></div>
+    </div>
+</section>

@@ -1,0 +1,23 @@
+.section-reviews {
+	.swiper {
+		@apply px-6;
+	}
+
+	/* Pagination */
+	.slider-pagination {
+		@apply flex justify-center mt-4 lg:hidden;
+
+		.swiper-pagination-bullet {
+			@apply bg-transparent border border-black opacity-100;
+
+			&.swiper-pagination-bullet-active {
+				@apply bg-black;
+			}
+		}
+	}
+
+	/* Navigation */
+	.swiper-button-disabled {
+		@apply invisible;
+	}
+}

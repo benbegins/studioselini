@@ -5,10 +5,10 @@
 
         {# Burger #}
         <button class="btn-burger relative z-20 lg:hidden" @click="toggleMenu($el)" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="16" viewBox="0 0 40 16" fill="none">
-                <rect width="32" x="8" height="1" class="fill-black"></rect>
-                <rect y="7" width="40" height="1" class="fill-black"></rect>
-                <rect y="14" width="32" x="8" height="1" class="fill-black" :class="[menuOpen ? 'rotate-45' : '']"></rect>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" viewBox="0 0 40 16" fill="none">
+                <rect width="32" x="8" height="1" :class="[menuOpen ? '-rotate-45 fill-black -translate-y-1.5 origin-right transition-transform duration-300' : 'fill-black origin-right transition-transform duration-300']"></rect>
+                <rect y="7" width="40" height="1" :class="[menuOpen ? 'scale-x-0 fill-black origin-center transition-transform duration-300' : 'fill-black origin-center transition-transform duration-300 scale-x-100']"></rect>
+                <rect y="14" width="32" x="8" height="1" :class="[menuOpen ? 'rotate-45 fill-black translate-y-2 origin-right transition-transform duration-300' : 'fill-black origin-right transition-transform duration-300']"></rect>
             </svg>
         </button>
 

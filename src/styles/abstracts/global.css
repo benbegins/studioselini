@@ -17,7 +17,7 @@ body {
 }
 
 .container {
-	@apply max-w-[1500px];
+	@apply max-w-screen-2xl;
 }
 
 a {

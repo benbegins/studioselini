@@ -41,13 +41,11 @@ export default class Parallax {
 
 		window.addEventListener("resize", () => {
 			if (window.innerWidth >= 1024 && !this.parallaxActive) {
-				console.log("active parallax")
 				this.parallaxActive = true
 				parallaxElements.forEach((element) => {
 					this.animateParallax(element)
 				})
 			} else if (window.innerWidth < 1024 && this.parallaxActive) {
-				console.log("desactive parallax")
 				this.parallaxActive = false
 				// Remove scrolltrigger animations and reset elements position
 				parallaxElements.forEach((element) => {
@@ -63,7 +61,6 @@ export default class Parallax {
 					}
 				})
 			}
-			console.log("resize", this.parallaxActive)
 		})
 	}
 

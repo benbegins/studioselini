@@ -1,0 +1,155 @@
+{
+    "key": "group_66c33eeb6abee",
+    "title": "Page tarifs",
+    "fields": [
+        {
+            "key": "field_66c33eeb48c55",
+            "label": "Introduction",
+            "name": "introduction",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66c33f1748c56",
+            "label": "Présentation",
+            "name": "presentation",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_66c33f2d48c57",
+            "label": "Cartes",
+            "name": "cards",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Ajouter un élément",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66c33f4e48c58",
+                    "label": "Nombre de cours",
+                    "name": "course_quantity",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66c33f2d48c57"
+                },
+                {
+                    "key": "field_66c33f6c48c59",
+                    "label": "Prix",
+                    "name": "price",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": 1,
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66c33f2d48c57"
+                },
+                {
+                    "key": "field_66c33f7748c5a",
+                    "label": "Lien d'achat Bsport",
+                    "name": "buy_link",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_66c33f2d48c57"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_template",
+                "operator": "==",
+                "value": "template-pages\/tarifs.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "featured_image"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1724072950
+}

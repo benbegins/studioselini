@@ -9,7 +9,11 @@ if ( ! function_exists( 'bemy_scripts' ) ) {
 		wp_enqueue_style( 'fonts', 'https://use.typekit.net/ggh8bso.css', array(), null, 'all' );
 		wp_enqueue_style( 'bemy-css', get_template_directory_uri() . '/dist/style.css', array('fonts'), wp_get_theme()->get( 'Version' ) );
 		wp_enqueue_script( 'axios', "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js", array(), false, true );
-		wp_enqueue_script( 'bemy-script', get_template_directory_uri() . '/dist/bemy.umd.js', array('axios'), wp_get_theme()->get( 'Version' ), true );
+		wp_enqueue_script( 'bemy-script', get_template_directory_uri() . '/dist/init.js', array('axios'), wp_get_theme()->get( 'Version' ), true );
+		if ( is_page_template( 'template-pages/contact.php' ) ) {
+			wp_enqueue_script( 'recaptcha', 'https://www.google.com/recaptcha/enterprise.js?render=6LfFYSoqAAAAAO8sSeoW3Qjp_d6PgLGonuDKBRNw', array(), false, true );
+		}
+
 		// Remove gutenberg css
 		wp_dequeue_style( 'wp-block-library' );
 
@@ -18,6 +22,13 @@ if ( ! function_exists( 'bemy_scripts' ) ) {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'bemy_scripts' );
+
+// Admin script
+function admin_scripts(){
+	wp_enqueue_script( 'bemy-admin-script', get_template_directory_uri() . '/dist/admin.js', array(), false, true );
+	wp_enqueue_style( 'bemy-admin-style', get_template_directory_uri() . '/src/styles/admin.css', array(), null, 'all' );
+}
+add_action( 'admin_enqueue_scripts', 'admin_scripts' );
 
 
 

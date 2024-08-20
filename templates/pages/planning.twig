@@ -2,72 +2,77 @@
 
 {% block content %}
 
+    {# Hero #}
+    <section class="pb-section lg:pt-16">
+        <div class="container text-center">
+            <h1 class="font-titling-display text-terracotta text-h1 leading-none mb-4">Planning des cours</h1>
+            <p class="md:w-2/3 xl:w-1/2 md:mx-auto">Consultez notre planning hebdomadaire pour trouver les cours qui s'intègrent parfaitement à votre emploi du temps et à vos besoins.</p>
+        </div>
+        {# Mandala #}
+        <div data-parallax data-speed="20"><img src="{{theme.uri}}/src/images/mandala.svg" alt="" class="max-w-none -z-10 opacity-10 absolute w-[500px] -top-[350px] left-[calc(50%-250px)] md:w-[700px] md:-top-[350px] md:left-[calc(50%-350px)] lg:w-[1024px] lg:-top-[680px] lg:left-[calc(50%-512px)]"></div>
+    </section>
 
-    <div class="pb-24 pt-44">
-        <div class="container">
-            <div class="bg-[#FFFFFF] p-10 rounded-xl">
-                
-                 <div class="grid lg:grid-cols-7 gap-2">
-                    <section>
-                        <div>Lundi</div>
-                        <ul class="relative h-[600px]">
-                            <li>
-                                <div class="bg-pink p-5">Cours 1</div>
-                            </li>
-                        </ul>
-                    </section>
-                    <section>
-                        <div>Mardi</div>
-                        <ul class="relative h-[600px]">
-                            <li>
-                                <div class="bg-pink p-5">Cours 1</div>
-                            </li>
-                        </ul>
-                    </section>
-                    <section>
-                        <div>Mercredi</div>
-                        <ul class="relative h-[600px]">
-                            <li>
-                                <div class="bg-pink p-5">Cours 1</div>
-                            </li>
-                        </ul>
-                    </section>
-                    <section>
-                        <div>Jeudi</div>
-                        <ul class="relative h-[600px]">
-                            <li>
-                                <div class="bg-pink p-5 h-[100px] absolute w-full top-1/2">Cours 1</div>
-                            </li>
-                        </ul>
-                    </section>
-                    <section>
-                        <div>Vendredi</div>
-                        <ul class="relative h-[600px]">
-                            <li>
-                                <div class="bg-pink p-5">Cours 1</div>
-                            </li>
-                        </ul>
-                    </section>
-                    <section>
-                        <div>Samedi</div>
-                        <ul class="relative h-[600px]">
-                            <li>
-                                <div class="bg-pink p-5">Cours 1</div>
-                            </li>
-                        </ul>
-                    </section>
-                    <section>
-                        <div>Dimanche</div>
-                        <ul class="relative h-[600px]">
-                            <li>
-                                <div class="bg-pink p-5">Cours 1</div>
-                            </li>
-                        </ul>
-                    </section>
-                 </div>   
-        
-            </div>
+    {# Planning #}
+    <div class="pb-section" v-scope="Planning()">
+        <div class="container" @vue:mounted="initPlanning()">
+            <ul class="hidden lg:grid lg:grid-cols-7 lg:bg-black lg:text-white lg:gap-1 lg:rounded-lg py-2 mb-4 sticky top-6 z-10">
+                <li v-for="day in days">
+                    <h2 v-text="day" class="font-sans text-btn uppercase text-center leading-none"></h2>
+                </li>
+            </ul>
+            <ul class="grid gap-6 lg:grid-cols-7 lg:gap-1">
+                <li v-for="(day, index) in days">
+                    <h2 v-text="day" class="bg-black text-white font-sans text-btn uppercase text-center py-2 leading-none mb-1 rounded-lg lg:hidden"></h2>
+                    {# 1430px => 13H * 110 #}
+                    <ul class="grid gap-1 lg:h-[1430px] lg:relative">
+                        <li v-for="course in courses[index]" class="lg:absolute lg:w-full" :style="{top: `${hourHeight * course.start_position}px`}">
+                            <div :style="{backgroundColor: course.color, height: (course.duration*(hourHeight/60)-2) + 'px'}" class="text-white p-3 rounded-lg flex flex-col justify-between gap-1">
+                                <div class="flex items-center gap-1 font-sans text-btn leading-none">
+                                    <span v-text="course.start_time"></span>
+                                    -
+                                    <span v-text="course.end_time"></span>
+                                </div>
+                                <div>
+                                    <h3 v-text="course.course" class="font-semibold leading-none mb-1"></h3>
+                                    <div class="gap-1 text-body-s leading-none flex flex-wrap divide-x">
+                                        <p v-text="course.level" v-if="course.level"></p>
+                                        <p v-text="course.teacher" v-if="course.teacher" class="pl-1 lg:hidden xl:block"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
+
+    {# Réassurance #}
+    <section class="pb-section relative z-10">
+        <div class="container">
+            <ul class="text-center grid gap-6 md:grid-cols-3 mb-10 lg:mb-16">
+                <li class="flex flex-col items-center gap-6">
+                    <img src="{{theme.uri}}/src/images/illu-yoga-1.svg" alt="Illu Yoga" class="w-40">
+                    <p class="lg:px-16">N’hésitez pas à apporter votre propre tapis. Dans le cas contraire, le matériel de yoga est fourni par le studio (sauf ateliers).</p>
+                </li>
+                <li class="flex flex-col items-center gap-6">
+                    <img src="{{theme.uri}}/src/images/illu-yoga-2.svg" alt="Illu Yoga" class="w-40">
+                    <p class="lg:px-16">Nous proposons des formules adaptées pour plusieurs séances. Consultez nos <a class="underline lg:hover:text-terracotta" href="{{tarifs_page_url}}">tarifs</a> ou demandez-nous directement lors de votre visite.</p>
+                </li>
+                <li class="flex flex-col items-center gap-6">
+                    <img src="{{theme.uri}}/src/images/illu-yoga-3.svg" alt="Illu Yoga" class="w-40">
+                    <p class="lg:px-16">Une équipe certifiée et passionnée et des cours de 7h45 à 20h30 pour s’adapter à tous les emplois du temps.</p>
+                </li>
+            </ul>
+            {% if options.bsport %}
+                <div class="flex justify-center">
+                    {% include "components/btns.twig" with {primary: true, text: "Réserver en ligne", url: options.bsport} %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+
+    {% include "components/section-footer-link.twig" with {title: "Les cours", subtitle: "Découvrez tous les cours du studio", button_text: "Découvrir", button_url: cours_page_url} %}
     
 {% endblock %}

@@ -2,6 +2,13 @@
 
 {% block content %}
 
-    <h1>Page</h1>
+    <section class="pb-section lg:pt-16">
+        <div class="container flex justify-center">
+            <div class="lg:w-2/3">
+                <h2 class="font-titling-headline text-h2">{{post.title}}</h2>
+                <div class="enriched-text pt-14">{{post.content}}</div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

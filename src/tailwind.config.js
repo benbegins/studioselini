@@ -27,10 +27,10 @@ export default {
 
 		extend: {
 			fontSize: {
-				h1: "clamp(3.375rem, 2.9789rem + 1.6901vw, 4.5rem)",
-				h2: "3rem",
-				"body-xl": "clamp(1.5rem, 1.3239rem + 0.7512vw, 2rem)",
-				"body-l": "clamp(1.25rem, 1.162rem + 0.3756vw, 1.5rem)",
+				h1: "clamp(3.375rem, 2.98rem + 1.69vw, 4.5rem)",
+				h2: "clamp(1.75rem, 1.3099rem + 1.8779vw, 3rem)",
+				"body-xl": "clamp(1.5rem, 1.324rem + 0.751vw, 2rem)",
+				"body-l": "clamp(1.25rem, 1.162rem + 0.375vw, 1.5rem)",
 				"body-m": "1.0625rem",
 				"body-s": "0.75rem",
 				btn: "0.875rem",

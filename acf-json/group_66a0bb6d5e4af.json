@@ -1,0 +1,171 @@
+{
+    "key": "group_66a0bb6d5e4af",
+    "title": "Page Studio",
+    "fields": [
+        {
+            "key": "field_66a0bc0329407",
+            "label": "Introduction",
+            "name": "introduction",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_66a0bb6d29401",
+            "label": "Studio",
+            "name": "studio",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_66a0bb8729402",
+                    "label": "Présentation",
+                    "name": "presentation",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
+                    "key": "field_66a0bb9b29403",
+                    "label": "Photo",
+                    "name": "photo",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": 800,
+                    "min_height": 600,
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
+                }
+            ]
+        },
+        {
+            "key": "field_66a0bbe229404",
+            "label": "Fondatrice",
+            "name": "fondatrice",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_66a0bbe229405",
+                    "label": "Présentation",
+                    "name": "presentation",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
+                    "key": "field_66a0bbe229406",
+                    "label": "Photo",
+                    "name": "photo",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": 800,
+                    "min_height": 600,
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-pages\/studio.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1721908486
+}

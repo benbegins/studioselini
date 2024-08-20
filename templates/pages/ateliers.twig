@@ -1,0 +1,89 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+    {# Hero #}
+    {% include "components/hero.twig" with {align: "left", title: "Nos ateliers", introduction: post.meta('introduction')} %}
+
+    {# Ateliers #}
+    <section class="pb-section relative z-10">
+        <div class="container">
+            <ul>
+                {% for workshop in workshops %}
+                    {% if workshop.meta('date') >= 'now' | date('Y-m-d') %}
+                        <li class="border-t border-black py-8 lg:py-16 grid gap-8 lg:gap-6 lg:grid-cols-2 lg:items-start">
+                            <div class="grid gap-8 lg:w-5/6">
+                                <div>
+                                    <h2 class="font-titling-headline text-h2 leading-none">{{workshop.title}}</h2>
+                                    <div class="text-white bg-black rounded-md px-2 pb-1 pt-1.5 leading-none inline-block">{{workshop.meta('date')|date('l d F')}}</div>
+                                </div>
+                                <div>
+                                    {# Hour #}
+                                    {% if workshop.meta('start_time') and workshop.meta('end_time') %}
+                                    <div class="flex items-center gap-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="30" viewBox="0 0 16 30" fill="none">
+                                            <circle cx="8" cy="14.0001" r="7.5" stroke="#18100A"/>
+                                            <path d="M8 8.50012V15.0001L10.5 16.5001" stroke="#18100A"/>
+                                        </svg>
+                                        <span>De {{workshop.meta('start_time')}} à {{workshop.meta('end_time')}}</span>
+                                    </div>
+                                    {% endif %}
+                                    
+                                    {# Location #}
+                                    {% if workshop.meta('adress') %}
+                                    <div class="flex items-center gap-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="30" viewBox="0 0 16 30" fill="none">
+                                            <path d="M2.6967 6.69682C5.62563 3.76789 10.3744 3.76789 13.3033 6.69682C16.2322 9.62575 16.2322 14.3745 13.3033 17.3034L8 22.6067L2.6967 17.3034C-0.232233 14.3745 -0.232233 9.62575 2.6967 6.69682Z" stroke="#18100A"/>
+                                            <circle cx="7.99986" cy="12.0002" r="2.92857" stroke="#18100A"/>
+                                        </svg>
+                                        <span>{{workshop.meta('adress')}}</span>
+                                    </div>
+                                    {% endif %}
+                                    
+                                    {# Teacher #}
+                                    {% if workshop.meta('teacher') %}
+                                    <div class="flex items-center gap-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="30" viewBox="0 0 18 30" fill="none">
+                                            <path d="M8.99993 8.07225C9.9467 8.07225 10.7142 7.30474 10.7142 6.35796C10.7142 5.41119 9.9467 4.64368 8.99993 4.64368C8.05316 4.64368 7.28564 5.41119 7.28564 6.35796C7.28564 7.30474 8.05316 8.07225 8.99993 8.07225Z" stroke="#18100A" stroke-miterlimit="10"/>
+                                            <path d="M8.99741 9.78654C7.39118 9.78654 6.08613 11.086 6.08613 12.6978L6.08613 13.1437C6.08613 14.2145 5.21609 15.0845 4.14527 15.0845H2.14307" stroke="#18100A" stroke-miterlimit="10"/>
+                                            <path d="M8.99756 9.78653C10.6038 9.78653 11.9088 11.086 11.9088 12.6978V13.1436C11.9088 14.2145 12.7789 15.0845 13.8497 15.0845H15.8575" stroke="#18100A" stroke-miterlimit="10"/>
+                                            <path d="M17.0002 19.3601C17.0002 20.4593 16.1091 21.3568 15.0034 21.3568H7.00342L8.17415 20.1861C8.43431 19.926 8.72049 19.6788 9.00667 19.4512C10.6522 18.1373 12.688 17.4024 14.8018 17.3633C14.8733 17.3568 14.9384 17.3568 15.0034 17.3568C16.1091 17.3568 17.0002 18.2544 17.0002 19.3601Z" stroke="#18100A" stroke-miterlimit="10"/>
+                                            <path d="M9.00001 19.4512C8.71383 19.6788 8.42765 19.926 8.16749 20.1861L6.99675 21.3569H2.99675C1.89106 21.3569 1 20.4593 1 19.3601C1 18.2609 1.89106 17.3569 2.99675 17.3569C3.06829 17.3569 3.13334 17.3569 3.19838 17.3634C5.3122 17.4089 7.35448 18.1439 9.00001 19.4512Z" stroke="#18100A" stroke-miterlimit="10"/>
+                                        </svg>
+                                        <span>{{workshop.meta('teacher')}}</span>
+                                    </div>
+                                    {% endif %}
+                                    
+                                </div>
+
+                                {# Prix #}
+                                {% if workshop.meta('price') %}
+                                <div class="border-t border-b border-black py-2 flex items-center justify-between border-opacity-10">
+                                    <div class="text-btn font-sans uppercase opacity-50">Prix</div>
+                                    <div class="text-body-xl font-titling-subhead">{{workshop.meta('price')}}</div>
+                                </div>
+                                {% endif %}
+                                
+                                {# Presentation #}
+                                <div class="enriched-text">
+                                    {{workshop.meta('presentation')}}
+                                </div>
+                                {# Inscription #}
+                                <div>
+                                    {% include "components/btns.twig" with {primary: true, text: "s'inscrire", url: workshop.meta('book_link'), target_blank: true} %}
+                                </div>
+                            </div>
+                            <div class="rounded-2xl overflow-hidden">
+                                {{ function('wp_get_attachment_image', workshop.thumbnail.id, 'large', false, {class: "w-full"}) }}
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    
+
+    {% include "components/section-footer-link.twig" with {title: "Le studio", subtitle: "Découvrez le studio Selíni et notre équipe", button_text: "Découvrir", button_url: studio_page_url} %}
+
+{% endblock %}

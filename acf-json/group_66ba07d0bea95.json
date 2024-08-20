@@ -1,0 +1,176 @@
+{
+    "key": "group_66ba07d0bea95",
+    "title": "PostType Ateliers",
+    "fields": [
+        {
+            "key": "field_66ba07d07e3d3",
+            "label": "Date",
+            "name": "date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "Y-m-d",
+            "first_day": 1
+        },
+        {
+            "key": "field_66ba08287e3d4",
+            "label": "Heure de début",
+            "name": "start_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "H:i:s",
+            "return_format": "H:i:s"
+        },
+        {
+            "key": "field_66ba08427e3d5",
+            "label": "Heure de fin",
+            "name": "end_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "H:i:s",
+            "return_format": "H:i:s"
+        },
+        {
+            "key": "field_66ba08557e3d6",
+            "label": "Adresse",
+            "name": "adress",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66ba085e7e3d7",
+            "label": "Intervenant(s)",
+            "name": "teacher",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66ba088f7e3d8",
+            "label": "Prix",
+            "name": "price",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "€"
+        },
+        {
+            "key": "field_66ba08ad7e3d9",
+            "label": "Lien de réservation",
+            "name": "book_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_66ba08d17e3da",
+            "label": "Présentation",
+            "name": "presentation",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "workshop"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1724071444
+}

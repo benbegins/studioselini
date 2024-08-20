@@ -1,0 +1,19 @@
+form {
+	input:not([type="checkbox"]),
+	textarea {
+		@apply w-full block rounded-lg border border-black bg-white px-4 pb-3 pt-3.5 leading-none focus:border-terracotta focus:outline-none;
+	}
+
+	textarea {
+		@apply min-h-[10rem];
+	}
+
+	label {
+		@apply text-body-s;
+	}
+
+	.error {
+		@apply text-xs font-sans;
+		color: red;
+	}
+}

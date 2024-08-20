@@ -1,6 +1,6 @@
 {% if primary %}
     {% if text and url %}
-        <a class="btn-primary uppercase bg-terracotta text-white rounded-full px-8 pt-3.5 pb-3 text-center font-sans text-btn inline-block relative z-10 overflow-hidden" href="{{url}}">
+        <a class="btn-primary uppercase bg-terracotta text-white rounded-full px-8 pt-3.5 pb-3 text-center font-sans text-btn inline-block relative z-10 overflow-hidden" href="{{url}}"{% if target_blank %} target="_blank"{% endif %}>
             {{text}}
         </a>
     {% endif %}
@@ -9,7 +9,7 @@
 
 {% if secondary %}
     {% if text and url %}
-        <a class="btn-secondary uppercase border border-terracotta text-terracotta rounded-full px-8 pt-3.5 pb-3 text-center font-sans text-btn inline-block relative z-10 overflow-hidden transition-colors duration-300" href="{{url}}">
+        <a class="btn-secondary uppercase border {% if black %}border-black text-black {% else %}border-terracotta text-terracotta {% endif %}rounded-full px-8 pt-3.5 pb-3 text-center font-sans text-btn inline-block relative z-10 overflow-hidden transition-colors duration-300 lg:hover:text-white" href="{{url}}"{% if target_blank %} target="_blank"{% endif %}>
             {{text}}
         </a>
     {% endif %}

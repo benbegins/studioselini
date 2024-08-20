@@ -8,7 +8,7 @@ export default defineConfig({
 	build: {
 		target: "modules",
 		lib: {
-			entry: resolve(__dirname, "init.js"),
+			entry: [resolve(__dirname, "init.js"), resolve(__dirname, "admin.js")],
 			name: "bemy",
 		},
 		outDir: resolve(__dirname, "../dist"),

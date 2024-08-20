@@ -1,0 +1,17 @@
+{# 
+    title: string
+    subtitle: string
+    button_text: string
+    button_url: string
+ #}
+ {% if title and subtitle and button_text and button_url %}
+    <section class="pt-section pb-20 bg-pink bg-opacity-20 relative mask-section-footer">
+        <div class="container pt-20 relative z-10">
+            <h2 class="font-sans text-btn uppercase">{{title}}</h2>
+            <p class="font-titling-subhead text-body-xl mb-3">{{subtitle}}</p>
+            {% include "components/btns.twig" with {secondary: true, black: true, text: button_text, url: button_url} %}
+        </div>
+        {# BG Gradient #}
+        <div class="pointer-events-none absolute opacity-50 w-[250vw] h-[250vw] top-1/2 right-0 translate-x-1/3 -translate-y-1/2 lg:w-[100vw] lg:h-[100vw]" style="background: radial-gradient(50% 50% at 50% 50%, #BFA597 0%, rgba(191, 165, 151, 0.00) 100%);"></div>
+    </section>
+ {% endif %}

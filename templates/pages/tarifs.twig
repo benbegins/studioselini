@@ -1,0 +1,60 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+    <section class="pb-section lg:pt-16">
+        <div class="container grid gap-16 lg:gap-6 lg:grid-cols-2 relative z-20">
+            <div class="flex flex-col text-center items-center lg:items-start lg:text-left lg:w-5/6">
+                <h1 class="font-titling-display text-terracotta text-h1 leading-none mb-4">Nos tarifs</h1>
+                <h2 class="text-body-l">{{post.meta('introduction')}}</h2>
+                <div class="pt-6 enriched-text">{{post.meta('presentation')}}</div>
+            </div>
+            <div>
+                <ul class="grid gap-6 md:grid-cols-2">
+                    {% set cards = post.meta('cards') %}
+                    {% for card in cards %}
+                        <li class="rounded-2xl border border-black bg-white min-h-[18rem] lg:min-h-[20rem] flex flex-col justify-between p-6">
+                            <h3 class="text-btn uppercase font-sans">Carte {{card.course_quantity}} cours</h3>
+                            <div>
+                                <p class="text-white bg-black rounded-md px-2 pb-1 pt-1.5 leading-none inline-block">{{card.price}} €</p>
+                                {% set unit_price = card.price|number_format / card.course_quantity|number_format %}
+                                <p class="text-body-xl font-titling-subhead leading-tight pt-2">Assistez à {{card.course_quantity}} cours pour {{unit_price|number_format}} €{% if card.course_quantity > 1 %}/cours{% endif %}</p>
+                                {% if card.buy_link %}
+                                    <a href="{{card.buy_link}}" class="inline-block pt-1 font-sans text-btn uppercase text-terracotta underline hover:no-underline" target="_blank">Acheter</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {# Mandala #}
+        <div data-parallax data-speed="20"><img src="{{theme.uri}}/src/images/mandala.svg" alt="" class="max-w-none -z-10 opacity-10 absolute w-[500px] -top-[350px] left-[calc(50%-250px)] md:w-[700px] md:-top-[350px] md:left-[calc(50%-350px)] lg:w-[1024px] lg:-top-[680px] lg:left-1/2"></div>
+        {# BG Gradient #}
+        <div class="pointer-events-none absolute z-10 opacity-50 w-[250vw] h-[250vw] top-0 left-0 -translate-x-1/3 -translate-y-1/3 lg:w-[100vw] lg:h-[100vw]" style="background: radial-gradient(50% 50% at 50% 50%, #BFA597 0%, rgba(191, 165, 151, 0.00) 100%);"></div>
+    </section>
+
+    {# Réassurance #}
+    <section class="pb-section relative z-10">
+        <div class="container">
+            <ul class="text-center grid gap-6 md:grid-cols-3 mb-10 lg:mb-16">
+                <li class="flex flex-col items-center gap-6">
+                    <img src="{{theme.uri}}/src/images/illu-yoga-1.svg" alt="Illu Yoga" class="w-40">
+                    <p class="lg:px-16">N’hésitez pas à apporter votre propre tapis. Dans le cas contraire, le matériel de yoga est fourni par le studio (sauf ateliers).</p>
+                </li>
+                <li class="flex flex-col items-center gap-6">
+                    <img src="{{theme.uri}}/src/images/illu-yoga-2.svg" alt="Illu Yoga" class="w-40">
+                    <p class="lg:px-16">Votre carte est automatiquement recréditée si vous annulez un cours jusqu’à 12h avant.</p>
+                </li>
+                <li class="flex flex-col items-center gap-6">
+                    <img src="{{theme.uri}}/src/images/illu-yoga-3.svg" alt="Illu Yoga" class="w-40">
+                    <p class="lg:px-16">N’hésitez pas à nous <a class="underline lg:hover:text-terracotta" href="{{contact_page_url}}">contacter</a> par téléphone, Instagram ou email si vous avez la moindre question.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    {% include "components/section-footer-link.twig" with {title: "Horaires", subtitle: "Consultez notre planning hebdomadaire", button_text: "Consulter", button_url: planning_page_url} %}
+
+
+{% endblock %}

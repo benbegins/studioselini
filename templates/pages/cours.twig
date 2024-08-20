@@ -1,0 +1,88 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+    {# Hero #}
+    {% include "components/hero.twig" with {image: post.thumbnail.id, title: "Nos cours", introduction: post.meta('introduction')} %}
+
+    <div v-scope="PopinTeacher()">
+        {# Courses list #}
+        <section class="pb-section relative z-10">
+            <div class="container lg:grid lg:grid-cols-4 lg:gap-6 lg:items-start">
+                <div class="hidden lg:block lg:sticky lg:top-[50px]">
+                    <ul class="grid gap-3 leading-none">
+                        {% for course in courses %}
+                            <li>
+                                <a href="#{{course.slug}}" class="text-btn font-sans uppercase flex items-center gap-2 lg:hover:text-terracotta">
+                                    <span class="block w-1 h-1 rounded-full border border-black"></span>
+                                    {{course.post_title}}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="lg:col-span-3" >
+                    <ul class="grid gap-16">
+                        {% for course in courses %}
+                            <li id="{{course.slug}}" class="grid gap-6 md:grid-cols-12 md:gap-16 items-start">
+                                {# Image #}
+                                <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl md:col-span-5">
+                                    {{ function('wp_get_attachment_image', course.thumbnail.id, 'medium_large', false, {class: "w-full h-full object-cover"}) }}
+                                </div>
+                                {# Text #}
+                                <div class="grid gap-2 md:col-span-7">
+                                    <h3 class="text-body-l">{{course.post_title}}</h3>
+                                    <p class="text-body-m">{{course.meta('presentation')}}</p>
+                                    
+                                    {% set teachers = course.meta('teacher') %}
+                                    {% if teachers %}
+                                        <div class="flex items-center gap-2">
+                                            <img src="{{theme.uri}}/src/images/icon-teacher.svg" alt="icon teacher" class="w-4">
+                                            <ul class="flex items-center gap-1">
+                                                {% for teacher in teachers %}
+                                                    <li>
+                                                        <button @click="clickTeacher({{teacher.id}})" class="underline lg:hover:text-terracotta">{{teacher.post_title}}</button>{% if loop.index < teachers|length %},{% endif %}
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
+                                    
+                                    {% if options.bsport %}
+                                        <div class="mt-6"><a href="{{options.bsport}}" class="font-sans text-btn uppercase text-terracotta border-b border-terracotta lg:hover:text-black lg:hover:border-black">Réserver</a></div>
+                                    {% endif %}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    
+                </div>
+            </div>
+        </section>
+
+        {# Popin #}
+        <div class="fixed w-full h-full top-0 left-0 z-50 p-6" v-if="popinOpen">
+            <div class="bg-white absolute z-10 w-auto rounded-2xl left-6 top-6 right-6 bottom-6 overflow-scroll md:grid md:grid-cols-2 md:bottom-auto md:top-1/2 md:-translate-y-1/2 md:max-h-[90vh] max-w-[calc(1536px*(2/3))] lg:w-full lg:left-1/2 lg:-translate-x-1/2">
+                <div class="w-full aspect-square">
+                    <img :src="teacher.image" :alt="teacher.name" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 lg:py-12">
+                    <h2 class="text-body-l" v-text="teacher.name"></h2>
+                    <ul class="flex items-center gap-1 mt-2">
+                        <span v-for="tag in teacher.tags" class="font-sans uppercase text-btn text-white bg-black rounded-[3px] px-1 pt-1 pb-0.5 leading-tight" v-text="tag"></span>
+                    </ul>
+                    <p class="mt-4" v-text="teacher.presentation"></p>
+                </div>
+                {# Icon close #}
+                <button class="absolute top-4 right-4" @click="closePopin()">
+                    <img class="w-4 lg:hover:opacity-70" src="{{theme.uri}}/src/images/icon-close.svg" alt="icon close">
+                </button>
+            </div>
+            <div class="bg-black absolute w-full h-full top-0 left-0 opacity-20 cursor-pointer" @click="closePopin()"></div>
+        </div>
+    </div>
+    
+
+    {% include "components/section-footer-link.twig" with {title: "Le studio", subtitle: "Découvrez le studio Selíni et notre équipe", button_text: "Découvrir", button_url: studio_page_url} %}
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+    <section class="pb-section lg:pt-16">
+        <div class="container grid gap-16 lg:gap-6 lg:grid-cols-2 relative z-20">
+            <div class="flex flex-col text-center items-center lg:items-start lg:text-left lg:w-5/6">
+                <h1 class="font-titling-display text-terracotta text-h1 leading-none mb-4">Contact</h1>
+                <div class="pt-6 enriched-text">
+                    <p>Si vous souhaitez expérimenter le pouvoir bienfaisant du yoga ou si vous cherchez un sanctuaire pour vous détendre et améliorer votre bien-être, n'hésitez pas à nous contacter dès aujourd'hui.</p>
+                    <p>Bienvenue au studio Selíni.</p>
+                </div>
+            </div>
+            <div>
+                <div v-scope="Contact()">
+                    <form class="grid gap-4" @submit.prevent="submit">
+                        <div>
+                            <label for="name">Nom</label>
+                            <input type="text" name="name" id="name" placeholder="Nom" v-model="fields.name">
+                            <span class="error" v-text="errors.name"></span>
+                        </div>
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" placeholder="Email" v-model="fields.email">
+                            <span class="error" v-text="errors.email"></span>
+                        </div>
+                        <div>
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" placeholder="Message" v-model="fields.message"></textarea>
+                            <span class="error" v-text="errors.message"></span>
+                        </div>
+                        <div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <input type="checkbox" name="rgpd" id="rgpd" v-model="fields.rgpd">
+                                    <label for="rgpd">J'accepte d'envoyer mes informations au Studio Selíni dans le but d'être recontacté.</label>
+                                </div>
+                                <span class="error" v-text="errors.rgpd"></span>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <button type="submit" class="btn-primary uppercase bg-terracotta text-white rounded-full px-8 pt-3.5 pb-3 text-center font-sans text-btn inline-block relative z-10 overflow-hidden">Envoyer</button>
+                        </div>
+                        <div v-if="success" class="font-sans bg-[#006633] text-white text-center p-3 pt-3.5 rounded-lg">
+                            <p>Votre message a été envoyé. Nous vous recontacterons très prochainement.</p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="mt-16 text-btn font-sans uppercase grid gap-2 md:grid-cols-3 md:gap-6">
+                    <div class="flex flex-col">
+                        {% if options.email %}
+                            <p><a href="mailto:{{options.email}}" class="hover:opacity-70">{{options.email}}</a></p>
+                        {% endif %}
+                        {% if options.phone %}
+                            <p>{{options.phone}}</p>
+                        {% endif %}
+                    </div>
+                    <div class="flex flex-col">
+                        {% if options.adress.street %}
+                            <p>{{options.adress.street}}</p>
+                        {% endif %}
+                        {% if options.adress.zip_code or options.adress.city %}
+                            <p>{{options.adress.zip_code}} {{options.adress.city}}</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        {% if options.instagram %}
+                            <p><a href="{{options.instagram}}" class="hover:opacity-70" target="_blank">Instagram</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# Mandala #}
+        <div data-parallax data-speed="20"><img src="{{theme.uri}}/src/images/mandala.svg" alt="" class="max-w-none -z-10 opacity-10 absolute w-[500px] -top-[350px] left-[calc(50%-250px)] md:w-[700px] md:-top-[350px] md:left-[calc(50%-350px)] lg:w-[1024px] lg:-top-[680px] lg:left-1/2"></div>
+        {# BG Gradient #}
+        <div class="pointer-events-none absolute z-10 opacity-50 w-[250vw] h-[250vw] top-0 left-0 -translate-x-1/3 -translate-y-1/3 lg:w-[100vw] lg:h-[100vw]" style="background: radial-gradient(50% 50% at 50% 50%, #BFA597 0%, rgba(191, 165, 151, 0.00) 100%);"></div>
+    </section>
+
+
+    {% include "components/section-footer-link.twig" with {title: "Le studio", subtitle: "Découvrez le studio Selíni et notre équipe", button_text: "Découvrir", button_url: studio_page_url} %}
+
+{% endblock %}

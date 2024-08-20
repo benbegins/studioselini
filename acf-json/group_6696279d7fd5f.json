@@ -135,6 +135,23 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_66c358e32fa83",
+            "label": "Instagram",
+            "name": "instagram",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
         }
     ],
     "location": [
@@ -147,7 +164,7 @@
         ]
     ],
     "menu_order": 0,
-    "position": "normal",
+    "position": "acf_after_title",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
@@ -155,5 +172,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1721202172
+    "modified": 1724078320
 }

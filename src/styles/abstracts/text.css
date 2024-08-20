@@ -25,3 +25,23 @@ body {
 .font-titling-display {
 	font-variation-settings: "opsz" 750, "wght" 400;
 }
+
+.enriched-text {
+	p:not(:last-child),
+	ul:not(:last-child) {
+		@apply pb-6;
+	}
+
+	a {
+		@apply underline hover:no-underline;
+	}
+
+	li {
+		@apply list-disc ml-4 pb-2;
+	}
+
+	h2,
+	h3 {
+		@apply text-body-xl font-titling-subhead pt-6 pb-2;
+	}
+}

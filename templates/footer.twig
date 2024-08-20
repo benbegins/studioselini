@@ -42,8 +42,15 @@
                 <p>© Studio Selíni - {{ 'now' | date('Y') }}</p>
             </div>
             <div class="flex gap-6 md:justify-center lg:justify-start">
-                <p><a href="" class="hover:text-pink">Instagram</a></p>
-                <p><a href="" class="hover:text-pink">Mentions légales</a></p>
+                {% if options.instagram %}
+                    <p><a href="{{options.instagram}}" class="hover:text-pink" target="_blank">Instagram</a></p>
+                {% endif %}
+                
+                
+                {% set legal_page = function('get_privacy_policy_url') %}
+                {% if legal_page %}
+                    <p><a href="{{legal_page}}" class="hover:text-pink">Mentions légales</a></p>
+                {% endif %}
             </div>
             <div class="flex gap-2 mt-20 md:mt-0 md:ml-auto lg:col-span-2">
                 <p>Site conçu par </p>

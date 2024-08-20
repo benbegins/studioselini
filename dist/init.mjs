@@ -5474,13 +5474,128 @@ function dh() {
     }
   };
 }
+function ph() {
+  return {
+    popinOpen: !1,
+    teacher: {
+      name: "",
+      tags: [],
+      presentation: "",
+      image: ""
+    },
+    urlApi: "/wp-json/wp/v2",
+    clickTeacher(n) {
+      axios.get(this.urlApi + "/teacher/" + n).then((e) => {
+        this.openPopin(e.data), this.getTeacherImage(e.data.featured_media);
+      }).catch((e) => {
+        console.error(e);
+      });
+    },
+    openPopin(n) {
+      this.resetTeacher(), document.body.style.overflow = "hidden", this.popinOpen = !0, this.teacher.name = n.title.rendered, this.teacher.tags = n.acf.tags.split(", "), this.teacher.presentation = n.acf.presentation;
+    },
+    getTeacherImage(n) {
+      axios.get(this.urlApi + "/media/" + n).then((e) => {
+        this.teacher.image = e.data.media_details.sizes.medium_large.source_url;
+      }).catch((e) => {
+        console.error(e);
+      });
+    },
+    closePopin() {
+      this.popinOpen = !1, document.body.style.overflow = "auto";
+    },
+    resetTeacher() {
+      this.teacher = {
+        name: "",
+        tags: [],
+        presentation: "",
+        image: ""
+      };
+    }
+  };
+}
+function hh() {
+  return {
+    days: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+    apiUrl: "/wp-json/bemy/planning",
+    courses: [],
+    hourHeight: 110,
+    initPlanning() {
+      this.fetchCourses();
+    },
+    fetchCourses() {
+      axios.get(this.apiUrl).then((n) => {
+        this.courses = n.data;
+      }).catch((n) => {
+        console.error(n);
+      });
+    }
+  };
+}
+function gh() {
+  return {
+    fields: {
+      name: "",
+      email: "",
+      message: "",
+      rgpd: !1
+    },
+    errors: {
+      name: "",
+      email: "",
+      message: "",
+      rgpd: ""
+    },
+    apiUrl: "/wp-json/bemy/contact",
+    success: !1,
+    submit() {
+      this.validate() || this.sendEmail();
+    },
+    validate() {
+      return this.errors = {
+        name: this.fields.name ? "" : "Vous devez renseigner votre nom",
+        email: this.fields.email ? "" : "Vous devez renseigner votre email",
+        message: this.fields.message ? "" : "Vous devez renseigner un message",
+        rgpd: this.fields.rgpd ? "" : "Vous devez cocher cette case pour envoyer le formulaire"
+      }, this.errors.name || this.errors.email || this.errors.message || this.errors.rgpd;
+    },
+    resetForm() {
+      this.fields = {
+        name: "",
+        email: "",
+        message: ""
+      }, this.errors = {
+        name: "",
+        email: "",
+        message: ""
+      };
+    },
+    sendEmail() {
+      grecaptcha.enterprise.ready(() => {
+        grecaptcha.enterprise.execute("6LfFYSoqAAAAAO8sSeoW3Qjp_d6PgLGonuDKBRNw", { action: "submit" }).then((n) => {
+          const e = {
+            name: this.fields.name,
+            email: this.fields.email,
+            message: this.fields.message,
+            "g-recaptcha-response": n
+          };
+          axios.post(this.apiUrl, e).then((t) => {
+            t.data.success ? (this.resetForm(), this.success = !0, console.log(t.data.message)) : (this.resetForm(), console.log(t.data.message));
+          }).catch((t) => {
+            console.log(t);
+          });
+        });
+      });
+    }
+  };
+}
 function Ua(n, e) {
   for (var t = 0; t < e.length; t++) {
     var i = e[t];
     i.enumerable = i.enumerable || !1, i.configurable = !0, "value" in i && (i.writable = !0), Object.defineProperty(n, i.key, i);
   }
 }
-function ph(n, e, t) {
+function mh(n, e, t) {
   return e && Ua(n.prototype, e), t && Ua(n, t), n;
 }
 /*!
@@ -5496,7 +5611,7 @@ var Fe, Kn, xt, Ei, Pi, Pr, Xu, Xi, an, qu, li, Gt, ju, Uu = function() {
   return Fe || typeof window < "u" && (Fe = window.gsap) && Fe.registerPlugin && Fe;
 }, Ku = 1, br = [], W = [], ei = [], ln = Date.now, Eo = function(e, t) {
   return t;
-}, hh = function() {
+}, _h = function() {
   var e = an.core, t = e.bridge || {}, i = e._scrollers, r = e._proxies;
   i.push.apply(i, W), r.push.apply(r, ei), W = i, ei = r, Eo = function(o, a) {
     return t[o](a);
@@ -5582,7 +5697,7 @@ var Fe, Kn, xt, Ei, Pi, Pr, Xu, Xi, an, qu, li, Gt, ju, Uu = function() {
   var t = Math.max.apply(Math, e), i = Math.min.apply(Math, e);
   return Math.abs(t) >= Math.abs(i) ? t : i;
 }, Qu = function() {
-  an = Fe.core.globals().ScrollTrigger, an && an.core && hh();
+  an = Fe.core.globals().ScrollTrigger, an && an.core && _h();
 }, Zu = function(e) {
   return Fe = e || Uu(), !Kn && Fe && typeof document < "u" && document.body && (xt = window, Ei = document, Pi = Ei.documentElement, Pr = Ei.body, qu = [xt, Ei, Pi, Pr], Fe.utils.clamp, ju = Fe.core.context || function() {
   }, Xi = "onpointerenter" in Pr ? "pointer" : "mouse", Xu = ve.isTouch = xt.matchMedia && xt.matchMedia("(hover: none), (pointer: coarse)").matches ? 1 : "ontouchstart" in xt || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0 ? 2 : 0, Gt = ve.eventTypes = ("ontouchstart" in Pi ? "touchstart,touchmove,touchcancel,touchend" : "onpointerdown" in Pi ? "pointerdown,pointermove,pointercancel,pointerup" : "mousedown,mousemove,mouseup,mouseup").split(","), setTimeout(function() {
@@ -5674,7 +5789,7 @@ var ve = /* @__PURE__ */ function() {
       var V = br.indexOf(P);
       V >= 0 && br.splice(V, 1), li === P && (li = 0);
     }, br.push(P), q && un(a) && (li = P), P.enable(h);
-  }, ph(n, [{
+  }, mh(n, [{
     key: "velocityX",
     get: function() {
       return this._vx.getVelocity();
@@ -5714,7 +5829,7 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
   return i["_" + t + "Clamp"] = r, r ? e.substr(6, e.length - 7) : e;
 }, el = function(e, t) {
   return t && (!_t(e) || e.substr(0, 6) !== "clamp(") ? "clamp(" + e + ")" : e;
-}, gh = function n() {
+}, vh = function n() {
   return Jr && requestAnimationFrame(n);
 }, tl = function() {
   return Cs = 1;
@@ -5738,14 +5853,14 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
   } : function() {
     return ai(e);
   });
-}, mh = function(e, t, i) {
+}, wh = function(e, t, i) {
   var r = i.d, s = i.d2, o = i.a;
   return (o = Oi(e, "getBoundingClientRect")) ? function() {
     return o()[r];
   } : function() {
     return (t ? af(s) : e["client" + s]) || 0;
   };
-}, _h = function(e, t) {
+}, yh = function(e, t) {
   return !t || ~ei.indexOf(e) ? lf(e) : function() {
     return ts;
   };
@@ -5774,7 +5889,7 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
   }
 }, mr = Math.abs, uf = "left", ff = "top", aa = "right", la = "bottom", ir = "width", rr = "height", cn = "Right", dn = "Left", pn = "Top", hn = "Bottom", be = "padding", kt = "margin", Fr = "Width", ua = "Height", Ce = "px", Ot = function(e) {
   return U.getComputedStyle(e);
-}, vh = function(e) {
+}, xh = function(e) {
   var t = Ot(e).position;
   e.style.position = t === "absolute" || t === "fixed" ? t : "relative";
 }, rl = function(e, t) {
@@ -5803,7 +5918,7 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
   for (s in i)
     t.push(i[s] / r);
   return t;
-}, wh = function(e) {
+}, bh = function(e) {
   return function(t) {
     return z.utils.snap(cf(e), t);
   };
@@ -5831,7 +5946,7 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
     var a = t(r);
     return !s || Math.abs(a - r) < o || a - r < 0 == s < 0 ? a : t(s < 0 ? r - e : r + e);
   };
-}, yh = function(e) {
+}, Th = function(e) {
   return function(t, i) {
     return fa(cf(e))(t, i.direction);
   };
@@ -5885,12 +6000,12 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
   nf = U.innerWidth, rf = U.innerHeight;
 }, rn = function() {
   W.cache++, !He && !tf && !le.fullscreenElement && !le.webkitFullscreenElement && (!Oo || nf !== U.innerWidth || Math.abs(U.innerHeight - rf) > U.innerHeight * 0.25) && gs.restart(!0);
-}, lr = {}, xh = [], df = function n() {
+}, lr = {}, Sh = [], df = function n() {
   return ke(X, "scrollEnd", n) || Ui(!0);
 }, ur = function(e) {
   return lr[e] && lr[e].map(function(t) {
     return t();
-  }) || xh;
+  }) || Sh;
 }, gt = [], pf = function(e) {
   for (var t = 0; t < gt.length; t += 5)
     (!e || gt[t + 4] && gt[t + 4].query === e) && (gt[t].style.cssText = gt[t + 1], gt[t].getBBox && gt[t].setAttribute("transform", gt[t + 2] || ""), gt[t + 3].uncache = 1);
@@ -5903,7 +6018,7 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
   W.cache++, (t || !tt) && W.forEach(function(i) {
     return nt(i) && i.cacheID++ && (i.rec = 0);
   }), _t(e) && (U.history.scrollRestoration = sa = e);
-}, tt, nr = 0, ol, bh = function() {
+}, tt, nr = 0, ol, Ch = function() {
   if (ol !== nr) {
     var e = ol = nr;
     requestAnimationFrame(function() {
@@ -5960,7 +6075,7 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
     X.isUpdating = !1;
   }
   Cn = 0;
-}, zo = [uf, ff, la, aa, kt + hn, kt + cn, kt + pn, kt + dn, "display", "flexShrink", "float", "zIndex", "gridColumnStart", "gridColumnEnd", "gridRowStart", "gridRowEnd", "gridArea", "justifySelf", "alignSelf", "placeSelf", "order"], es = zo.concat([ir, rr, "boxSizing", "max" + Fr, "max" + ua, "position", kt, be, be + pn, be + cn, be + hn, be + dn]), Th = function(e, t, i) {
+}, zo = [uf, ff, la, aa, kt + hn, kt + cn, kt + pn, kt + dn, "display", "flexShrink", "float", "zIndex", "gridColumnStart", "gridColumnEnd", "gridRowStart", "gridRowEnd", "gridArea", "justifySelf", "alignSelf", "placeSelf", "order"], es = zo.concat([ir, rr, "boxSizing", "max" + Fr, "max" + ua, "position", kt, be, be + pn, be + cn, be + hn, be + dn]), Eh = function(e, t, i) {
   kr(i);
   var r = e._gsap;
   if (r.spacerIsNative)
@@ -5976,17 +6091,17 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
       l = zo[s], o[l] = i[l];
     o.position = i.position === "absolute" ? "absolute" : "relative", i.display === "inline" && (o.display = "inline-block"), a[la] = a[aa] = "auto", o.flexBasis = i.flexBasis || "auto", o.overflow = "visible", o.boxSizing = "border-box", o[ir] = _s(e, rt) + Ce, o[rr] = _s(e, Ee) + Ce, o[be] = a[kt] = a[ff] = a[uf] = "0", kr(r), a[ir] = a["max" + Fr] = i[ir], a[rr] = a["max" + ua] = i[rr], a[be] = i[be], e.parentNode !== t && (e.parentNode.insertBefore(t, e), t.appendChild(e)), e._gsap.swappedIn = !0;
   }
-}, Sh = /([A-Z])/g, kr = function(e) {
+}, Ph = /([A-Z])/g, kr = function(e) {
   if (e) {
     var t = e.t.style, i = e.length, r = 0, s, o;
     for ((e.t._gsap || z.core.getCache(e.t)).uncache = 1; r < i; r += 2)
-      o = e[r + 1], s = e[r], o ? t[s] = o : t[s] && t.removeProperty(s.replace(Sh, "-$1").toLowerCase());
+      o = e[r + 1], s = e[r], o ? t[s] = o : t[s] && t.removeProperty(s.replace(Ph, "-$1").toLowerCase());
   }
 }, Gn = function(e) {
   for (var t = es.length, i = e.style, r = [], s = 0; s < t; s++)
     r.push(es[s], i[es[s]]);
   return r.t = e, r;
-}, Ch = function(e, t, i) {
+}, Mh = function(e, t, i) {
   for (var r = [], s = e.length, o = i ? 8 : 0, a; o < s; o += 2)
     a = e[o], r.push(a, a in t ? t[a] : e[o + 1]);
   return r.t = e.t, r;
@@ -6008,13 +6123,13 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
     w = "scroll" + r.d2, Zn(o, M, r, C && M > 20 || !C && (d ? Math.max(ne[w], Ht[w]) : o.parentNode[w]) <= M + 1), d && (u = ai(a), d && (o.style[r.op.p] = u[r.op.p] - r.op.m - o._offset + Ce));
   }
   return c && g && (w = ai(g), c.seek(p), y = ai(g), c._caScrollDist = w[r.p] - y[r.p], e = e / c._caScrollDist * p), c && c.seek(h), c ? e : Math.round(e);
-}, Eh = /(webkit|moz|length|cssText|inset)/i, ul = function(e, t, i, r) {
+}, kh = /(webkit|moz|length|cssText|inset)/i, ul = function(e, t, i, r) {
   if (e.parentNode !== t) {
     var s = e.style, o, a;
     if (t === ne) {
       e._stOrig = s.cssText, a = Ot(e);
       for (o in a)
-        !+o && !Eh.test(o) && a[o] && typeof s[o] == "string" && o !== "0" && (s[o] = a[o]);
+        !+o && !kh.test(o) && a[o] && typeof s[o] == "string" && o !== "0" && (s[o] = a[o]);
       s.top = i, s.left = r;
     } else
       s.cssText = e._stOrig;
@@ -6062,7 +6177,7 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
     } : i, Nn);
     var s = i, o = s.onUpdate, a = s.toggleClass, l = s.id, u = s.onToggle, f = s.onRefresh, d = s.scrub, p = s.trigger, c = s.pin, m = s.pinSpacing, h = s.invalidateOnRefresh, w = s.anticipatePin, y = s.onScrubComplete, g = s.onSnapComplete, _ = s.once, v = s.snap, T = s.pinReparent, E = s.pinSpacer, S = s.containerAnimation, M = s.fastScrollEnd, C = s.preventOverlaps, x = i.horizontal || i.containerAnimation && i.horizontal !== !1 ? rt : Ee, O = !d && d !== 0, k = ot(i.scroller || U), A = z.core.getCache(k), D = ar(k), L = ("pinType" in i ? i.pinType : Oi(k, "pinType") || D && "fixed") === "fixed", R = [i.onEnter, i.onLeave, i.onEnterBack, i.onLeaveBack], $ = O && i.toggleActions.split(" "), q = "markers" in i ? i.markers : Nn.markers, J = D ? 0 : parseFloat(Ot(k)["border" + x.p2 + Fr]) || 0, b = this, ee = i.onRefreshInit && function() {
       return i.onRefreshInit(b);
-    }, Le = mh(k, D, x), zt = _h(k, D), ce = 0, Ie = 0, je = 0, we = zi(k, x), Ue, $e, di, Ke, Rt, Q, he, st, dt, P, pt, ii, pi, ye, hi, Fi, cr, Pe, gi, ge, Ft, Et, ri, $r, xe, Pn, mi, dr, pr, _i, Bi, Y, $i, Bt, $t, Nt, Ni, hr, ni;
+    }, Le = wh(k, D, x), zt = yh(k, D), ce = 0, Ie = 0, je = 0, we = zi(k, x), Ue, $e, di, Ke, Rt, Q, he, st, dt, P, pt, ii, pi, ye, hi, Fi, cr, Pe, gi, ge, Ft, Et, ri, $r, xe, Pn, mi, dr, pr, _i, Bi, Y, $i, Bt, $t, Nt, Ni, hr, ni;
     if (b._startClamp = b._endClamp = !1, b._dir = x, w *= 45, b.scroller = k, b.scroll = S ? S.time.bind(S) : we, Ke = we(), b.vars = i, r = r || i.animation, "refreshPriority" in i && (ef = 1, i.refreshPriority === -9999 && (gn = b)), A.tweenScroll = A.tweenScroll || {
       top: fl(k, Ee),
       left: fl(k, rt)
@@ -6083,7 +6198,7 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
       scrollBehavior: "auto"
     }), W.forEach(function(I) {
       return nt(I) && I.target === (D ? le.scrollingElement || Ht : k) && (I.smooth = !1);
-    }), di = nt(v.snapTo) ? v.snapTo : v.snapTo === "labels" ? wh(r) : v.snapTo === "labelsDirectional" ? yh(r) : v.directional !== !1 ? function(I, G) {
+    }), di = nt(v.snapTo) ? v.snapTo : v.snapTo === "labels" ? bh(r) : v.snapTo === "labelsDirectional" ? Th(r) : v.directional !== !1 ? function(I, G) {
       return fa(v.snapTo)(I, Ye() - Ie < 500 ? 0 : G.direction);
     } : z.utils.snap(v.snapTo), Bt = v.duration || {
       min: 0.1,
@@ -6118,7 +6233,7 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
     }), b.spacer = Pe = $e.spacer, pr = Ot(c), $r = pr[m + x.os2], ge = z.getProperty(c), Ft = z.quickSetter(c, x.a, Ce), Ks(c, Pe, pr), cr = Gn(c)), q) {
       ii = qi(q) ? rl(q, nl) : nl, P = Vn("scroller-start", l, k, x, ii, 0), pt = Vn("scroller-end", l, k, x, ii, 0, P), gi = P["offset" + x.op.d2];
       var Nr = ot(Oi(k, "content") || k);
-      st = this.markerStart = Vn("start", l, Nr, x, ii, gi, 0, S), dt = this.markerEnd = Vn("end", l, Nr, x, ii, gi, 0, S), S && (hr = z.quickSetter([st, dt], x.a, Ce)), !L && !(ei.length && Oi(k, "fixedMarkers") === !0) && (vh(D ? ne : k), z.set([P, pt], {
+      st = this.markerStart = Vn("start", l, Nr, x, ii, gi, 0, S), dt = this.markerEnd = Vn("end", l, Nr, x, ii, gi, 0, S), S && (hr = z.quickSetter([st, dt], x.a, Ce)), !L && !(ei.length && Oi(k, "fixedMarkers") === !0) && (xh(D ? ne : k), z.set([P, pt], {
         force3D: !0
       }), Pn = z.quickSetter(P, x.a, Ce), dr = z.quickSetter(pt, x.a, Ce));
     }
@@ -6138,7 +6253,7 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
       var F = I !== !1 || !b.enabled, N = He;
       F !== b.isReverted && (F && (Nt = Math.max(we(), b.scroll.rec || 0), je = b.progress, Ni = r && r.progress()), st && [st, dt, P, pt].forEach(function(Me) {
         return Me.style.display = F ? "none" : "block";
-      }), F && (He = b, b.update(F)), c && (!T || !b.isActive) && (F ? Th(c, Pe, hi) : Ks(c, Pe, Ot(c), xe)), F || b.update(F), He = N, b.isReverted = F);
+      }), F && (He = b, b.update(F)), c && (!T || !b.isActive) && (F ? Eh(c, Pe, hi) : Ks(c, Pe, Ot(c), xe)), F || b.update(F), He = N, b.isReverted = F);
     }, b.refresh = function(I, G, F, N) {
       if (!((He || !b.enabled) && !G)) {
         if (c && I && Lt) {
@@ -6164,7 +6279,7 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
             left: Ve.left + (Mn ? Es : Vi - Q) + Ce,
             boxSizing: "border-box",
             position: "fixed"
-          }, Ge[ir] = Ge["max" + Fr] = Math.ceil(Ve.width) + Ce, Ge[rr] = Ge["max" + ua] = Math.ceil(Ve.height) + Ce, Ge[kt] = Ge[kt + pn] = Ge[kt + cn] = Ge[kt + hn] = Ge[kt + dn] = "0", Ge[be] = Re[be], Ge[be + pn] = Re[be + pn], Ge[be + cn] = Re[be + cn], Ge[be + hn] = Re[be + hn], Ge[be + dn] = Re[be + dn], Fi = Ch(hi, Ge, T), tt && we(0)), r ? (da = r._initted, Ws(1), r.render(r.duration(), !0, !0), ri = ge(x.a) - Et + ye + se, mi = Math.abs(ye - ri) > 1, L && mi && Fi.splice(Fi.length - 2, 2), r.render(0, !0, !0), da || r.invalidate(!0), r.parent || r.totalTime(r.totalTime()), Ws(0)) : ri = ye, Xt && (Xt.value ? Xt.style["overflow" + x.a.toUpperCase()] = Xt.value : Xt.style.removeProperty("overflow-" + x.a));
+          }, Ge[ir] = Ge["max" + Fr] = Math.ceil(Ve.width) + Ce, Ge[rr] = Ge["max" + ua] = Math.ceil(Ve.height) + Ce, Ge[kt] = Ge[kt + pn] = Ge[kt + cn] = Ge[kt + hn] = Ge[kt + dn] = "0", Ge[be] = Re[be], Ge[be + pn] = Re[be + pn], Ge[be + cn] = Re[be + cn], Ge[be + hn] = Re[be + hn], Ge[be + dn] = Re[be + dn], Fi = Mh(hi, Ge, T), tt && we(0)), r ? (da = r._initted, Ws(1), r.render(r.duration(), !0, !0), ri = ge(x.a) - Et + ye + se, mi = Math.abs(ye - ri) > 1, L && mi && Fi.splice(Fi.length - 2, 2), r.render(0, !0, !0), da || r.invalidate(!0), r.parent || r.totalTime(r.totalTime()), Ws(0)) : ri = ye, Xt && (Xt.value ? Xt.style["overflow" + x.a.toUpperCase()] = Xt.value : Xt.style.removeProperty("overflow-" + x.a));
         else if (p && we() && !S)
           for (Ve = p.parentNode; Ve && Ve !== ne; )
             Ve._pinOffset && (Q -= Ve._pinOffset, he -= Ve._pinOffset), Ve = Ve.parentNode;
@@ -6258,7 +6373,7 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
       }, z.delayedCall(0.01, b.update), ye = 0.01, Q = he = 0;
     } else
       b.refresh();
-    c && bh();
+    c && Ch();
   }, n.register = function(i) {
     return vr || (z = i || of(), sf() && window.document && n.enable(), vr = Jr), vr;
   }, n.defaults = function(i) {
@@ -6274,7 +6389,7 @@ var z, vr, U, le, Ht, ne, Ju, gs, Sn, fn, Zr, zn, He, Cs, ko, et, Qa, Za, wr, ef
       $n(ke, W[s], W[s + 1]), $n(ke, W[s], W[s + 2]);
   }, n.enable = function() {
     if (U = window, le = document, Ht = le.documentElement, ne = le.body, z && (Sn = z.utils.toArray, fn = z.utils.clamp, Ao = z.core.context || jt, Ws = z.core.suppressOverwrites || jt, sa = U.history.scrollRestoration || "auto", Io = U.pageYOffset, z.core.globals("ScrollTrigger", n), ne)) {
-      Jr = 1, Mr = document.createElement("div"), Mr.style.height = "100vh", Mr.style.position = "absolute", gf(), gh(), ve.register(z), n.isTouch = ve.isTouch, yi = ve.isTouch && /(iPad|iPhone|iPod|Mac)/g.test(navigator.userAgent), Oo = ve.isTouch === 1, Oe(U, "wheel", _r), Ju = [U, le, Ht, ne], z.matchMedia ? (n.matchMedia = function(l) {
+      Jr = 1, Mr = document.createElement("div"), Mr.style.height = "100vh", Mr.style.position = "absolute", gf(), vh(), ve.register(z), n.isTouch = ve.isTouch, yi = ve.isTouch && /(iPad|iPhone|iPod|Mac)/g.test(navigator.userAgent), Oo = ve.isTouch === 1, Oe(U, "wheel", _r), Ju = [U, le, Ht, ne], z.matchMedia ? (n.matchMedia = function(l) {
         var u = z.matchMedia(), f;
         for (f in l)
           u.add(f, l[f]);
@@ -6407,7 +6522,7 @@ var cl = function(e, t, i, r) {
 }, Yn = {
   auto: 1,
   scroll: 1
-}, Ph = function(e) {
+}, Oh = function(e) {
   var t = e.event, i = e.target, r = e.axis, s = (t.changedTouches ? t.changedTouches[0] : t).target, o = s._gsap || z.core.getCache(s), a = Ye(), l;
   if (!o._isScrollT || a - o._isScrollT > 2e3) {
     for (; s && s !== ne && (s.scrollHeight <= s.clientHeight && s.scrollWidth <= s.clientWidth || !(Yn[(l = Ot(s)).overflowY] || Yn[l.overflowX])); )
@@ -6422,7 +6537,7 @@ var cl = function(e, t, i, r) {
     debounce: !1,
     lockAxis: !0,
     type: t,
-    onWheel: r = r && Ph,
+    onWheel: r = r && Oh,
     onPress: r,
     onDrag: r,
     onScroll: r,
@@ -6433,10 +6548,10 @@ var cl = function(e, t, i, r) {
       return ke(le, ve.eventTypes[0], pl, !0);
     }
   });
-}, Mh = /(input|label|select|textarea)/i, dl, pl = function(e) {
-  var t = Mh.test(e.target.tagName);
+}, Ah = /(input|label|select|textarea)/i, dl, pl = function(e) {
+  var t = Ah.test(e.target.tagName);
   (t || dl) && (e._gsapAllow = !0, dl = t);
-}, kh = function(e) {
+}, Dh = function(e) {
   qi(e) || (e = {}), e.preventDefault = e.isNormalizer = e.allowClicks = !0, e.type || (e.type = "wheel,touch"), e.debounce = !!e.debounce, e.id = e.id || "normalizer";
   var t = e, i = t.normalizeScrollX, r = t.momentum, s = t.allowNestedScroll, o = t.onRelease, a, l, u = ot(e.target) || Ht, f = z.core.globals().ScrollSmoother, d = f && f.get(), p = yi && (e.content && ot(e.content) || d && e.content !== !1 && !d.smooth() && d.content()), c = zi(u, Ee), m = zi(u, rt), h = 1, w = (ve.isTouch && U.visualViewport ? U.visualViewport.scale * U.visualViewport.width : U.outerWidth) / U.innerWidth, y = 0, g = nt(r) ? function() {
     return r(a);
@@ -6528,7 +6643,7 @@ X.normalizeScroll = function(n) {
     Je && Je.kill(), Je = n;
     return;
   }
-  var e = n instanceof ve ? n : kh(n);
+  var e = n instanceof ve ? n : Dh(n);
   return Je && Je.target === e.target && Je.kill(), ar(e.target) && (Je = e), e;
 };
 X.core = {
@@ -6550,7 +6665,7 @@ X.core = {
 };
 of() && z.registerPlugin(X);
 mt.registerPlugin(X);
-class Oh {
+class Lh {
   constructor() {
     this.parallaxActive = !1, this.initParallax();
   }
@@ -6639,11 +6754,14 @@ class hl {
 $l({
   $delimiters: ["[[", "]]"],
   Menu: Yd,
-  Reviews: dh
+  Reviews: dh,
+  PopinTeacher: ph,
+  Planning: hh,
+  Contact: gh
 }).mount();
-const Ah = () => {
-  new Oh(), new hl(".btn-primary"), new hl(".btn-secondary");
+const Ih = () => {
+  new Lh(), new hl(".btn-primary"), new hl(".btn-secondary");
 };
 document.addEventListener("DOMContentLoaded", () => {
-  Ah();
+  Ih();
 });

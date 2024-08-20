@@ -1,0 +1,88 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+    {# Hero #}
+    {% include "components/hero.twig" with {visual: true, image: post.thumbnail.id, title: "Le studio", introduction: post.meta('introduction')} %}
+
+    <div class="relative">
+        {# Section studio #}
+        <section class="pb-section">
+            <div class="container grid gap-6 md:grid-cols-2 items-center">
+                {# Text #}
+                <div class="lg:w-5/6">
+                    <h2 class="text-h2 font-titling-headline leading-none mb-2 lg:mb-8">Studio Selíni</h2>
+                    {% if post.meta('studio').presentation %}
+                        <p>{{ post.meta('studio').presentation }}</p>
+                    {% endif %}
+                </div>
+                {# Image #}
+                {% if post.meta('studio').photo %}
+                    <div class="w-full aspect-[7/5] overflow-hidden rounded-2xl">
+                        {{ function('wp_get_attachment_image', post.meta('studio').photo, 'large', false, {class: "w-full h-full object-cover"}) }}
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+        {# Section Fondatrice #}
+        <section class="pb-section">
+            <div class="container grid gap-6 md:grid-cols-2 items-center">
+                {# Image #}
+                {% if post.meta('fondatrice').photo %}
+                    <div class="w-full aspect-[7/5] overflow-hidden rounded-2xl">
+                        {{ function('wp_get_attachment_image', post.meta('fondatrice').photo, 'large', false, {class: "w-full h-full object-cover"}) }}
+                    </div>
+                {% endif %}
+                {# Text #}
+                <div class="lg:w-5/6 lg:ml-auto">
+                    <h2 class="text-h2 font-titling-headline leading-none mb-2 lg:mb-8">La fondatrice</h2>
+                    {% if post.meta('fondatrice').presentation %}
+                        <p>{{ post.meta('fondatrice').presentation }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        {# BG Gradient #}
+        <div class="absolute opacity-50 -z-10 w-[250vw] h-[250vw] top-1/2 left-0 -translate-x-1/3 -translate-y-1/2 lg:w-[100vw] lg:h-[100vw] lg:-translate-y-1/3" style="background: radial-gradient(50% 50% at 50% 50%, #BFA597 0%, rgba(191, 165, 151, 0.00) 100%);">
+        </div>
+    </div>
+
+    {# Equipe #}
+    <section class="pb-section relative z-10">
+        <div class="container">
+            <div class="text-center mb-8 lg:mb-16">
+                <h2 class="text-h2 font-titling-headline leading-none">L'équipe</h2>
+                <p class="mt-2 lg:mt-4 lg:w-1/2 lg:mx-auto">Chaque professeur apporte son expertise et son énergie pour faire de votre pratique une expérience enrichissante, bienveillante et dédiée à votre bien-être.</p>
+            </div>
+            {# Teachers List #}
+            {% if teachers %}
+                <ul class="grid gap-10 md:grid-cols-2 md:gap-x-6 md:gap-y-16 lg:grid-cols-3">
+                    {% for teacher in teachers %}
+                        {% set tags = teacher.meta('tags')|split(',') %}
+                        <li id="{{teacher.slug}}" >
+                            <div class="w-full aspect-square overflow-hidden rounded-2xl">
+                                {{ function('wp_get_attachment_image', teacher.thumbnail.id, 'large', false, {class: "w-full h-full object-cover"}) }}
+                            </div>
+                            <h3 class="text-body-l mt-6">{{teacher.post_title}}</h3>
+                            {% if tags is not empty %}
+                            <div class="flex items-center gap-1">
+                                {% for tag in tags %}
+                                    <span class="leading-tight font-sans uppercase text-btn text-white bg-black rounded-[3px] px-1 pt-1 pb-0.5">{{tag}}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            {% if teacher.meta('presentation') %}
+                                <p class="mt-4">{{teacher.meta('presentation')}}</p>
+                            {% endif %}
+                            
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </section>
+
+    {% include "components/section-footer-link.twig" with {title: "Horaires", subtitle: "Consultez notre planning hebdomadaire", button_text: "Consulter", button_url: planning_page_url} %}
+
+{% endblock %}

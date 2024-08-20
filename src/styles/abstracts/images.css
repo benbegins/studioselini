@@ -4,14 +4,22 @@
 	&::before {
 		content: "";
 		@apply block absolute top-0 left-0 w-full h-1/4 -translate-y-px z-10;
-		background: url("../../images/mask-image.svg") center top no-repeat;
+		background: url("../../images/mask-image-mobile.svg") center top no-repeat;
 		background-size: cover;
+
+		@media screen and (min-width: 768px) {
+			background: url("../../images/mask-image.svg") center top no-repeat;
+		}
 	}
 
 	&::after {
 		content: "";
 		@apply block absolute bottom-0 left-0 w-full h-1/4 rotate-180 translate-y-px z-10;
-		background: url("../../images/mask-image.svg") center top no-repeat;
+		background: url("../../images/mask-image-mobile.svg") center top no-repeat;
 		background-size: cover;
+
+		@media screen and (min-width: 768px) {
+			background: url("../../images/mask-image.svg") center top no-repeat;
+		}
 	}
 }

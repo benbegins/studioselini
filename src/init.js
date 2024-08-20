@@ -6,6 +6,7 @@ import { Reviews } from "./js/components/Reviews"
 import { PopinTeacher } from "./js/components/PopinTeacher"
 import { Planning } from "./js/components/Planning"
 import { Contact } from "./js/components/Contact"
+import { Intro } from "./js/components/Intro"
 import Parallax from "./js/components/Parallax"
 import Buttons from "./js/components/buttons"
 
@@ -16,6 +17,7 @@ createApp({
 	PopinTeacher,
 	Planning,
 	Contact,
+	Intro,
 }).mount()
 
 const init = () => {

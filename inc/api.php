@@ -2,6 +2,12 @@
 // acf_to_rest_api : Enable the option show in rest
 add_filter( 'acf/rest_api/field_settings/show_in_rest', '__return_true' );
 
+// Cache API
+function add_bemy_planning_endpoint($allowed_endpoints) {
+    $allowed_endpoints[] = 'bemy/planning';
+    return $allowed_endpoints;
+}
+add_filter( 'wp_rest_cache/allowed_endpoints', 'add_bemy_planning_endpoint', 10, 1);
 
 /**
  * Endpoints 

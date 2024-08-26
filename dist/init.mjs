@@ -5485,14 +5485,14 @@ function ph() {
     },
     urlApi: "/wp-json/wp/v2",
     clickTeacher(n) {
-      axios.get(this.urlApi + "/teacher/" + n).then((e) => {
+      this.resetTeacher(), document.body.style.overflow = "hidden", this.popinOpen = !0, axios.get(this.urlApi + "/teacher/" + n).then((e) => {
         this.openPopin(e.data), this.getTeacherImage(e.data.featured_media);
       }).catch((e) => {
         console.error(e);
       });
     },
     openPopin(n) {
-      this.resetTeacher(), document.body.style.overflow = "hidden", this.popinOpen = !0, this.teacher.name = n.title.rendered, this.teacher.tags = n.acf.tags.split(", "), this.teacher.presentation = n.acf.presentation;
+      this.teacher.name = n.title.rendered, this.teacher.tags = n.acf.tags.split(", "), this.teacher.presentation = n.acf.presentation;
     },
     getTeacherImage(n) {
       axios.get(this.urlApi + "/media/" + n).then((e) => {

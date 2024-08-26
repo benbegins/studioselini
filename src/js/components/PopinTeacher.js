@@ -10,6 +10,12 @@ function PopinTeacher() {
 		urlApi: "/wp-json/wp/v2",
 
 		clickTeacher(id) {
+			// Reset the teacher object
+			this.resetTeacher()
+			// body overflow hidden
+			document.body.style.overflow = "hidden"
+			// Open the popin
+			this.popinOpen = true
 			// Axios call to get the teacher data from the API based on the ID
 			axios
 				.get(this.urlApi + "/teacher/" + id)
@@ -23,12 +29,6 @@ function PopinTeacher() {
 		},
 
 		openPopin(data) {
-			// Reset the teacher object
-			this.resetTeacher()
-			// body overflow hidden
-			document.body.style.overflow = "hidden"
-			// Open the popin
-			this.popinOpen = true
 			// Fill the teacher object with the data from the API
 			this.teacher.name = data.title.rendered
 			this.teacher.tags = data.acf.tags.split(", ")

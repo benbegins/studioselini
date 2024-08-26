@@ -8,6 +8,7 @@
     {# Ateliers #}
     <section class="pb-section relative z-10">
         <div class="container">
+            {% if workshops %}
             <ul>
                 {% for workshop in workshops %}
                     {% if workshop.meta('date') >= 'now' | date('Y-m-d') %}
@@ -80,6 +81,19 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+
+            {% else %}
+                
+                <div class="grid gap-6 border-t border-black py-8 lg:grid-cols-2 lg:items-center lg:py-16">
+                    <p class="text-body-xl opacity-50">Ooooh... Il n’y a aucun atelier de prévu en ce moment, n’hésitez pas à revenir un peu plus tard.</p>
+                    <div class="flex justify-center">
+                        <img src="{{theme.uri}}/src/images/illu-yoga-4.svg" alt="Illustration Yoga">
+                    </div>
+                </div>
+
+            {% endif %}
+            
+            
         </div>
     </section>
     

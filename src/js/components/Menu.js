@@ -9,13 +9,23 @@ function Menu(props) {
 		displayMenu: true,
 		menuIsScrolling: false,
 
-		toggleMenu() {
+		toggleMenu(button) {
 			this.menuOpen = !this.menuOpen
+			console.log(this.$refs.nav)
 
 			if (this.menuOpen) {
 				document.body.style.overflow = "hidden"
+
+				button.setAttribute("aria-expanded", true)
+				this.$refs.nav.classList.add("-translate-x-full")
+				this.$refs.nav.setAttribute("aria-hidden", false)
 			} else {
 				document.body.style.overflow = "auto"
+
+				button.setAttribute("aria-expanded", false)
+				this.$refs.nav.classList.remove("-translate-x-full")
+				this.$refs.nav.setAttribute("aria-hidden", true)
+
 				this.closeAllSubmenus()
 			}
 		},

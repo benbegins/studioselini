@@ -3,6 +3,17 @@
 add_filter( 'acf/rest_api/field_settings/show_in_rest', '__return_true' );
 
 /**
+ * Cache endpoint 
+ */
+function wprc_add_acf_posts_endpoint( $allowed_endpoints ) {
+    if ( ! isset( $allowed_endpoints[ 'bemy' ] ) || ! in_array( 'posts', $allowed_endpoints[ 'bemy' ] ) ) {
+        $allowed_endpoints[ 'bemy' ][] = 'planning';
+    }
+    return $allowed_endpoints;
+}
+add_filter( 'wp_rest_cache/allowed_endpoints', 'wprc_add_acf_posts_endpoint', 10, 1);
+
+/**
  * Endpoints 
  */
 add_action( 'rest_api_init', 'register_reviews_route' );

@@ -14,17 +14,20 @@ function wprc_add_acf_posts_endpoint( $allowed_endpoints ) {
 }
 add_filter( 'wp_rest_cache/allowed_endpoints', 'wprc_add_acf_posts_endpoint', 10, 1);
 
-add_action( 'save_post_course', 'flush_cache_on_course_edit' );
+/**
+ * Delete planning endpoint cache on course edit 
+ */
 function flush_cache_on_course_edit( $post_id ) {
     // Check if WP Rest Cache plugin is active
     if ( class_exists( 'WP_REST_Cache_Plugin' ) ) {
         // Get the endpoint for the "course" post type
-        $endpoint = 'bemy/planning/' . $post_id;
+        $endpoint = 'wp-json/bemy/planning';
 
         // Delete cache for the specific endpoint
         delete_cache_by_endpoint( $endpoint );
     }
 }
+add_action( 'save_post_course', 'flush_cache_on_course_edit' );
 
 /**
  * Endpoints 

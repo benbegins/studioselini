@@ -40,6 +40,8 @@ function PopinTeacher() {
 				.get(this.urlApi + "/media/" + id)
 				.then((response) => {
 					this.teacher.image = response.data.media_details.sizes.medium_large.source_url
+						? response.data.media_details.sizes.medium_large.source_url
+						: response.data.media_details.sizes.full.source_url
 				})
 				.catch((error) => {
 					console.error(error)

@@ -9,6 +9,9 @@ function wprc_add_acf_posts_endpoint( $allowed_endpoints ) {
     if ( ! isset( $allowed_endpoints[ 'bemy' ] ) || ! in_array( 'posts', $allowed_endpoints[ 'bemy' ] ) ) {
         $allowed_endpoints[ 'bemy' ][] = 'planning';
     }
+    if ( ! isset( $allowed_endpoints[ 'bemy' ] ) || ! in_array( 'posts', $allowed_endpoints[ 'bemy' ] ) ) {
+        $allowed_endpoints[ 'bemy' ][] = 'reviews';
+    }
     return $allowed_endpoints;
 }
 add_filter( 'wp_rest_cache/allowed_endpoints', 'wprc_add_acf_posts_endpoint', 10, 1);

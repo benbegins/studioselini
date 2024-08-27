@@ -3,7 +3,7 @@ import "./styles/main.css"
 import { createApp } from "petite-vue"
 import { Menu } from "./js/components/Menu"
 import { Reviews } from "./js/components/Reviews"
-import { PopinTeacher } from "./js/components/PopinTeacher"
+import { Courses } from "./js/components/Courses"
 import { Planning } from "./js/components/Planning"
 import { Contact } from "./js/components/Contact"
 import { Intro } from "./js/components/Intro"
@@ -14,7 +14,7 @@ createApp({
 	$delimiters: ["[[", "]]"],
 	Menu,
 	Reviews,
-	PopinTeacher,
+	Courses,
 	Planning,
 	Contact,
 	Intro,

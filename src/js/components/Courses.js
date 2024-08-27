@@ -1,4 +1,4 @@
-function PopinTeacher() {
+function Courses() {
 	return {
 		popinOpen: false,
 		teacher: {
@@ -39,6 +39,7 @@ function PopinTeacher() {
 			axios
 				.get(this.urlApi + "/media/" + id)
 				.then((response) => {
+					// If medium_large size exists, use it, otherwise use full size
 					this.teacher.image = response.data.media_details.sizes.medium_large
 						? response.data.media_details.sizes.medium_large.source_url
 						: response.data.media_details.sizes.full.source_url
@@ -61,7 +62,34 @@ function PopinTeacher() {
 				image: "",
 			}
 		},
+
+		initScrollDetection() {
+			const courses = document.querySelectorAll(".course-item")
+			const tags = document.querySelectorAll(".course-tag")
+
+			// Add event listener to detect wich course item is in the top of the viewport
+			window.addEventListener("scroll", () => {
+				courses.forEach((course, index) => {
+					if (this.isElementInViewport(course)) {
+						this.highlightTag(tags[index])
+					}
+				})
+			})
+		},
+
+		isElementInViewport(el) {
+			const rect = el.getBoundingClientRect()
+			return rect.top <= window.innerHeight / 4
+		},
+
+		highlightTag(tagActive) {
+			const tags = document.querySelectorAll(".course-tag")
+			tags.forEach((tag) => {
+				tag.classList.remove("w-3", "bg-black")
+			})
+			tagActive.classList.add("w-3", "bg-black")
+		},
 	}
 }
 
-export { PopinTeacher }
+export { Courses }

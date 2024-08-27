@@ -5511,6 +5511,22 @@ function ph() {
         presentation: "",
         image: ""
       };
+    },
+    initScrollDetection() {
+      const n = document.querySelectorAll(".course-item"), e = document.querySelectorAll(".course-tag");
+      window.addEventListener("scroll", () => {
+        n.forEach((t, i) => {
+          this.isElementInViewport(t) && this.highlightTag(e[i]);
+        });
+      });
+    },
+    isElementInViewport(n) {
+      return n.getBoundingClientRect().top <= window.innerHeight / 4;
+    },
+    highlightTag(n) {
+      document.querySelectorAll(".course-tag").forEach((t) => {
+        t.classList.remove("w-3", "bg-black");
+      }), n.classList.add("w-3", "bg-black");
     }
   };
 }
@@ -6815,7 +6831,7 @@ $l({
   $delimiters: ["[[", "]]"],
   Menu: Yd,
   Reviews: dh,
-  PopinTeacher: ph,
+  Courses: ph,
   Planning: hh,
   Contact: gh,
   Intro: mh

@@ -5,7 +5,7 @@
     {# Hero #}
     {% include "components/hero.twig" with {image: post.thumbnail.id, title: "Nos cours", introduction: post.meta('introduction')} %}
 
-    <div v-scope="PopinTeacher()">
+    <div v-scope="Courses()" @vue:mounted="initScrollDetection">
         {# Courses list #}
         <section class="pb-section relative z-10">
             <div class="container lg:grid lg:grid-cols-4 lg:gap-6 lg:items-start">
@@ -14,7 +14,7 @@
                         {% for course in courses %}
                             <li>
                                 <a href="#{{course.slug}}" class="text-btn font-sans uppercase flex items-center gap-2 lg:hover:text-terracotta">
-                                    <span class="block w-1 h-1 rounded-full border border-black"></span>
+                                    <span class="course-tag block w-1 h-1 rounded-full border border-black transition-all duration-150"></span>
                                     {{course.post_title}}
                                 </a>
                             </li>
@@ -24,7 +24,7 @@
                 <div class="lg:col-span-3" >
                     <ul class="grid gap-16">
                         {% for course in courses %}
-                            <li id="{{course.slug}}" class="grid gap-6 md:grid-cols-12 md:gap-16 items-start">
+                            <li id="{{course.slug}}" class="course-item grid gap-6 md:grid-cols-12 md:gap-16 items-start">
                                 {# Image #}
                                 <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl md:col-span-5">
                                     {{ function('wp_get_attachment_image', course.thumbnail.id, 'medium_large', false, {class: "w-full h-full object-cover"}) }}

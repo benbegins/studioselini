@@ -5553,7 +5553,7 @@ function hh() {
       });
     },
     changeDay(n) {
-      this.dayActive = n, this.displayCurrentDay(), this.scrollTop();
+      n === this.dayActive ? this.dayActive = 99 : this.dayActive = n, this.displayCurrentDay(), this.scrollTop();
     },
     scrollTop() {
       const n = document.querySelector(".planning-container");

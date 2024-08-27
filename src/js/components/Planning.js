@@ -59,7 +59,12 @@ function Planning() {
 		},
 
 		changeDay(day) {
-			this.dayActive = day
+			if (day === this.dayActive) {
+				// Close day if already active
+				this.dayActive = 99
+			} else {
+				this.dayActive = day
+			}
 
 			this.displayCurrentDay()
 			this.scrollTop()

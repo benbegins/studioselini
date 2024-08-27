@@ -14,18 +14,21 @@
 
     {# Planning #}
     <div class="pb-section" v-scope="Planning()">
-        <div class="container" @vue:mounted="initPlanning()">
+        <div class="container planning-container" @vue:mounted="initPlanning()">
             <ul class="hidden lg:grid lg:grid-cols-7 lg:bg-black lg:text-white lg:gap-1 lg:rounded-lg py-2 mb-4 sticky top-6 z-10">
                 <li v-for="day in days">
                     <h2 v-text="day" class="font-sans text-btn uppercase text-center leading-none"></h2>
                 </li>
             </ul>
-            <ul class="grid gap-6 lg:grid-cols-7 lg:gap-1">
+            <ul class="grid lg:grid-cols-7 lg:gap-1">
                 <li v-for="(day, index) in days">
-                    <h2 v-text="day" class="bg-black text-white font-sans text-btn uppercase text-center py-2 leading-none mb-1 rounded-lg lg:hidden"></h2>
+                    <button class="w-full mb-1 cursor-pointer flex justify-between items-center rounded-lg bg-black py-3 px-3 text-center font-sans text-btn uppercase leading-none text-white lg:hidden" :class="[dayActive == index ? 'bg-opacity-100' : 'bg-opacity-50']" @click="changeDay(index)">
+                        <span v-text="day"></span>
+                        <img src="{{theme.uri}}/src/images/icon-arrow-white.svg" width="7" alt="icone fleche" :class="[dayActive == index ? '-rotate-90' : 'rotate-90']">
+                    </button>
                     {# 1430px => 13H * 110 #}
-                    <ul class="grid gap-1 lg:h-[1430px] lg:relative">
-                        <li v-for="course in courses[index]" class="lg:absolute lg:w-full" :style="{top: `${hourHeight * course.start_position}px`}">
+                    <ul :id="`day-${index}`" class="planning-days grid gap-1 overflow-hidden lg:h-[1430px] lg:relative">
+                        <li v-for="course in courses[index]" class="last:mb-1 lg:absolute lg:w-full" :style="{top: `${hourHeight * course.start_position}px`}">
                             <div :style="{backgroundColor: course.color, height: (course.duration*(hourHeight/60)-2) + 'px'}" class="text-white p-3 rounded-lg flex flex-col justify-between gap-1">
                                 <div class="flex items-center gap-1 font-sans text-btn leading-none">
                                     <span v-text="course.start_time"></span>
@@ -40,6 +43,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
                         </li>
                     </ul>
                 </li>

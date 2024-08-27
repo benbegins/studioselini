@@ -11,7 +11,6 @@ function Menu(props) {
 
 		toggleMenu(button) {
 			this.menuOpen = !this.menuOpen
-			console.log(this.$refs.nav)
 
 			if (this.menuOpen) {
 				document.body.style.overflow = "hidden"

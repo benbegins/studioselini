@@ -5496,7 +5496,7 @@ function ph() {
     },
     getTeacherImage(n) {
       axios.get(this.urlApi + "/media/" + n).then((e) => {
-        this.teacher.image = e.data.media_details.sizes.medium_large.source_url ? e.data.media_details.sizes.medium_large.source_url : e.data.media_details.sizes.full.source_url;
+        this.teacher.image = e.data.media_details.sizes.medium_large ? e.data.media_details.sizes.medium_large.source_url : e.data.media_details.sizes.full.source_url;
       }).catch((e) => {
         console.error(e);
       });

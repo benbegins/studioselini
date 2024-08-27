@@ -8,8 +8,6 @@ add_filter( 'acf/rest_api/field_settings/show_in_rest', '__return_true' );
 function wprc_add_acf_posts_endpoint( $allowed_endpoints ) {
     if ( ! isset( $allowed_endpoints[ 'bemy' ] ) || ! in_array( 'posts', $allowed_endpoints[ 'bemy' ] ) ) {
         $allowed_endpoints[ 'bemy' ][] = 'planning';
-    }
-    if ( ! isset( $allowed_endpoints[ 'bemy' ] ) || ! in_array( 'posts', $allowed_endpoints[ 'bemy' ] ) ) {
         $allowed_endpoints[ 'bemy' ][] = 'reviews';
     }
     return $allowed_endpoints;

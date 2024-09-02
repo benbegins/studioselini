@@ -35,14 +35,32 @@
     </section>
 
 
-    {# Introduction #}
-    {% if post.meta('introduction').introduction %}
-        <section class="py-section">
-            <div class="container">
-                <p class="text-body-xl font-titling-subhead text-center lg:w-2/3 lg:mx-auto">{{post.meta('introduction').introduction}}</p>
-            </div>
-        </section>
-    {% endif %}
+
+    {# Mandala Steps #}
+    <section class="pb-section">
+        <div class="container">
+            <ul class="text-center grid gap-10 md:grid-cols-3 lg:gap-6">
+                <li class="flex flex-col gap-6 items-center xl:px-16">
+                    <div>
+                        <img src="{{theme.uri}}/src/images/mandala-step-1.svg" alt="Mandala">
+                    </div>
+                    <p>Lorsque vous faites du yoga une fois par semaine, votre esprit change</p>
+                </li>
+                <li class="flex flex-col gap-6 items-center xl:px-16">
+                    <div>
+                        <img src="{{theme.uri}}/src/images/mandala-step-2.svg" alt="Mandala">
+                    </div>
+                    <p>Lorsque vous faites du yoga deux fois par semaine, votre corps change</p>
+                </li>
+                <li class="flex flex-col gap-6 items-center xl:px-16">
+                    <div>
+                        <img src="{{theme.uri}}/src/images/mandala-step-3.svg" alt="Mandala">
+                    </div>
+                    <p>Lorsque vous faites du yoga tous les jours, votre vie change</p>
+                </li>
+            </ul>
+        </div>
+    </section>
     
     
     {# Photo #}
@@ -75,31 +93,16 @@
     </section>
 
 
-    {# Mandala Steps #}
-    <section class="pb-section">
-        <div class="container">
-            <ul class="text-center grid gap-10 md:grid-cols-3 lg:gap-6">
-                <li class="flex flex-col gap-6 items-center xl:px-16">
-                    <div>
-                        <img src="{{theme.uri}}/src/images/mandala-step-1.svg" alt="Mandala">
-                    </div>
-                    <p>Lorsque vous faites du yoga une fois par semaine, votre esprit change</p>
-                </li>
-                <li class="flex flex-col gap-6 items-center xl:px-16">
-                    <div>
-                        <img src="{{theme.uri}}/src/images/mandala-step-2.svg" alt="Mandala">
-                    </div>
-                    <p>Lorsque vous faites du yoga deux fois par semaine, votre corps change</p>
-                </li>
-                <li class="flex flex-col gap-6 items-center xl:px-16">
-                    <div>
-                        <img src="{{theme.uri}}/src/images/mandala-step-3.svg" alt="Mandala">
-                    </div>
-                    <p>Lorsque vous faites du yoga tous les jours, votre vie change</p>
-                </li>
-            </ul>
-        </div>
-    </section>
+
+    {# Introduction #}
+    {% if post.meta('introduction').introduction %}
+        <section class="pb-section">
+            <div class="container">
+                <p class="text-body-xl font-titling-subhead text-center lg:w-2/3 lg:mx-auto">{{post.meta('introduction').introduction}}</p>
+            </div>
+        </section>
+    {% endif %}
+
 
     {% include "components/reviews.twig" %}
     

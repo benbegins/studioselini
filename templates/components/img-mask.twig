@@ -1,5 +1,5 @@
 <section class="{{classContainer|default('pb-section')}}">
-    <div class="w-full aspect-video mask-image overflow-hidden" data-parallax data-speed="20" data-scale="1.1">
+    <div class="w-full aspect-square lg:aspect-video mask-image overflow-hidden" data-parallax data-speed="20" data-scale="1.1">
         {{ function('wp_get_attachment_image', imageID, '2048x2048', false, {'class': class|default('w-full h-full object-cover')}) }}
     </div>
 </section>

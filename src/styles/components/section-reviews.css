@@ -5,7 +5,7 @@
 
 	/* Pagination */
 	.slider-pagination {
-		@apply flex justify-center mt-4 lg:hidden;
+		@apply flex justify-center mb-8 lg:hidden;
 
 		.swiper-pagination-bullet {
 			@apply bg-transparent border border-black opacity-100;

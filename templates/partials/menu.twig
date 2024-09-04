@@ -16,7 +16,7 @@
                         {% include "partials/menu.twig" with {'items': item.children} %}
                     </ul>
                 {% else %}
-                    <a href="{{ item.link }}" class="lg:hover:text-terracotta">{{ item.title }}</a>
+                    <a href="{{ item.link }}">{{ item.title }}</a>
                 {% endif %}
             </li>
         {% endfor %}

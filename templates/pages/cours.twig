@@ -9,12 +9,12 @@
         {# Courses list #}
         <section class="pb-section relative z-10">
             <div class="container lg:grid lg:grid-cols-4 lg:gap-6 lg:items-start">
-                <div class="hidden lg:block lg:sticky lg:top-[50px]">
+                <div class="hidden lg:block lg:sticky lg:top-[120px]">
                     <ul class="grid gap-3 leading-none">
                         {% for course in courses %}
                             <li>
-                                <a href="#{{course.slug}}" class="text-btn font-sans uppercase flex items-center gap-2 lg:hover:text-terracotta">
-                                    <span class="course-tag block w-1 h-1 rounded-full border border-black transition-all duration-150"></span>
+                                <a href="#{{course.slug}}" class="text-btn font-sans uppercase flex items-center gap-2 group">
+                                    <span class="course-tag block w-1 h-1 mb-0.5 rounded-full border border-black transition-all duration-150 group-hover:bg-terracotta group-hover:border-terracotta"></span>
                                     {{course.post_title}}
                                 </a>
                             </li>
@@ -32,8 +32,7 @@
                                 {# Text #}
                                 <div class="grid gap-2 md:col-span-7">
                                     <h3 class="text-body-l">{{course.post_title}}</h3>
-                                    <p class="text-body-m">{{course.meta('presentation')}}</p>
-                                    
+
                                     {% set teachers = course.meta('teacher') %}
                                     {% if teachers %}
                                         <div class="flex items-center gap-2">
@@ -47,6 +46,8 @@
                                             </ul>
                                         </div>
                                     {% endif %}
+
+                                    <p class="text-body-m">{{course.meta('presentation')}}</p>
                                     
                                     {% if options.bsport %}
                                         <div class="mt-6"><a href="{{options.bsport}}" class="font-sans text-btn uppercase text-terracotta border-b border-terracotta lg:hover:text-black lg:hover:border-black">Réserver</a></div>

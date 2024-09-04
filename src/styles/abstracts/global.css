@@ -2,6 +2,10 @@
 	@apply bg-terracotta text-white;
 }
 
+html {
+	scroll-padding-top: 3.5rem;
+}
+
 body {
 	@apply bg-white text-black font-serif text-body-m leading-[1.41];
 

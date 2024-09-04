@@ -21,9 +21,5 @@
 </section>
 
 {% if image %}
-    <section class="pb-section">
-        <div class="w-full aspect-video mask-image overflow-hidden" data-parallax data-speed="20">
-            {{ function('wp_get_attachment_image', image, '2048x2048') }}
-        </div>
-    </section>
+    {{include('components/img-mask.twig', {imageID: image})}}
 {% endif %}

@@ -1,7 +1,14 @@
-<header v-scope="Menu()" @vue:mounted="scrollEvent($el)" class="py-4 site-header fixed w-full z-50 transition-colors duration-500" :class="[menuIsScrolling ? 'bg-white' : 'bg-transparent']">
+<header v-scope="Menu()" @vue:mounted="scrollEvent($el)" class="py-4 lg:py-3 site-header fixed w-full z-50 transition-colors duration-500" :class="[menuIsScrolling ? 'bg-white' : 'bg-transparent']">
     <div class="container flex justify-between items-center gap-4">
         {# Logo #}
-        <a href="{{site.url}}"><img class="w-52 relative z-20 transition-all duration-500" :class="[menuIsScrolling ? 'lg:w-52' : 'lg:w-72']" src="{{theme.uri}}/src/images/logo-studio-selini.svg" alt="Logo Studio Selini"></a>
+        <a href="{{site.url}}">
+            <img 
+                class="w-52 lg:w-[22rem] relative z-20 transition-all duration-500" 
+                :class="{'lg:w-60': menuIsScrolling}" 
+                src="{{theme.uri}}/src/images/logo-studio-selini.svg" 
+                alt="Logo Studio Selini"
+            >
+        </a>
 
         {# Burger #}
         <button class="btn-burger relative z-20 lg:hidden" @click="toggleMenu($el)" aria-label="Open menu" aria-expanded="false" aria-controls="menu">

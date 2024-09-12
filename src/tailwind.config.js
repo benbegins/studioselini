@@ -36,6 +36,9 @@ export default {
 				btn: "0.875rem",
 				"menu-mobile": "1.5rem",
 			},
+			height: {
+				dvh: "100dvh",
+			},
 			spacing: {
 				section: "clamp(5rem, 3.5915rem + 6.0094vw, 9rem)",
 			},

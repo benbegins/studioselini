@@ -61,14 +61,17 @@
             </ul>
         </div>
     </section>
+
+
+    {{ include('components/bsport.twig')}}
     
     
     {# Photo #}
-    {{include('components/img-mask.twig', {imageID: post.thumbnail.id})}}
+    {# {{include('components/img-mask.twig', {imageID: post.thumbnail.id})}} #}
 
    
    {# Nos cours #}
-    <section class="pb-section">
+    {# <section class="pb-section">
         <div class="container flex flex-col gap-10 md:flex-row-reverse md:items-center">
             <div class="md:w-1/2">
                 <div class="lg:w-2/3 lg:mx-auto">
@@ -86,7 +89,7 @@
                 {{ function('wp_get_attachment_image', post.meta('cours').image, 'large', false, {'class': 'w-full h-full object-cover'}) }}
             </div>
         </div>
-    </section>
+    </section> #}
 
 
 
@@ -94,7 +97,7 @@
     {% if post.meta('introduction').introduction %}
         <section class="pb-section">
             <div class="container">
-                <p class="text-body-xl font-titling-subhead text-center lg:w-2/3 lg:mx-auto">{{post.meta('introduction').introduction}}</p>
+                <p class="text-body-l font-titling-subhead text-center lg:w-2/3 lg:mx-auto">{{post.meta('introduction').introduction}}</p>
             </div>
         </section>
     {% endif %}

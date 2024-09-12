@@ -13,7 +13,9 @@
     </section>
 
     {# Planning #}
-    <div class="pb-section" v-scope="Planning()">
+    {{ include('components/bsport.twig')}}
+
+    {# <div class="pb-section" v-scope="Planning()">
         <div class="container planning-container" @vue:mounted="initPlanning()">
             <ul class="hidden lg:grid lg:grid-cols-7 lg:bg-black lg:text-white lg:gap-1 lg:rounded-lg py-2 mb-4 sticky top-6 z-10">
                 <li v-for="day in days">
@@ -26,7 +28,7 @@
                         <span v-text="day"></span>
                         <img src="{{theme.uri}}/src/images/icon-arrow-white.svg" width="7" alt="icone fleche" :class="[dayActive == index ? '-rotate-90' : 'rotate-90']">
                     </button>
-                    {# 1430px => 13H * 110 #}
+                    1430px => 13H * 110
                     <ul :id="`day-${index}`" class="planning-days grid gap-1 overflow-hidden lg:h-[1430px] lg:relative">
                         <li v-for="course in courses[index]" class="last:mb-1 lg:absolute lg:w-full" :style="{top: `${hourHeight * course.start_position}px`}">
                             <div :style="{backgroundColor: course.color, height: (course.duration*(hourHeight/60)-2) + 'px'}" class="text-white p-3 rounded-lg flex flex-col justify-between gap-1">
@@ -49,7 +51,7 @@
                 </li>
             </ul>
         </div>
-    </div>
+    </div> #}
 
     {# Réassurance #}
     <section class="pb-section relative z-10">

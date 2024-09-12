@@ -50,7 +50,7 @@
                                     <p class="text-body-m">{{course.meta('presentation')}}</p>
                                     
                                     {% if options.bsport %}
-                                        <div class="mt-6"><a href="{{options.bsport}}" class="font-sans text-btn uppercase text-terracotta border-b border-terracotta lg:hover:text-black lg:hover:border-black">Réserver</a></div>
+                                        <div class="mt-6"><a target="_blank" href="{{options.bsport}}{{course.meta('bsport_id') ? '?activity__in=' ~ course.meta('bsport_id') : ''}}" class="font-sans text-btn uppercase text-terracotta border-b border-terracotta lg:hover:text-black lg:hover:border-black">Réserver</a></div>
                                     {% endif %}
                                 </div>
                             </li>

@@ -14,12 +14,11 @@
                     {% set cards = post.meta('cards') %}
                     {% for card in cards %}
                         <li>
-                            <a href="{{card.buy_link}}" class="rounded-2xl border border-black bg-white min-h-[18rem] lg:min-h-[20rem] flex flex-col justify-between p-6 hover:text-terracotta hover:bg-[#DBD2CE] group" target="_blank" rel="nofollow">
-                                <h3 class="text-btn uppercase font-sans">Carte {{card.course_quantity}} cours</h3>
+                            <a href="{{card.buy_link ? card.buy_link : options.bsport}}" class="rounded-2xl border border-black bg-white min-h-[18rem] lg:min-h-[20rem] flex flex-col justify-between p-6 hover:text-terracotta hover:bg-[#DBD2CE] group" target="_blank" rel="nofollow">
+                                <h3 class="text-btn uppercase font-sans">Carte {{card.card_type}}</h3>
                                 <div>
                                     <p class="text-white bg-black rounded-md px-2 pb-1 pt-1.5 leading-none inline-block transition-colors duration-200 group-hover:bg-terracotta">{{card.price}} €</p>
-                                    {% set unit_price = card.price|number_format / card.course_quantity|number_format %}
-                                    <p class="text-body-xl font-titling-subhead leading-tight pt-2">Assistez à {{card.course_quantity}} cours pour {{unit_price|number_format}} €{% if card.course_quantity > 1 %}/cours{% endif %}</p>
+                                    <p class="text-body-xl font-titling-subhead leading-tight pt-2">{{card.description}}</p>
                                     <span class="inline-block pt-1 font-sans text-btn uppercase text-terracotta underline">Acheter</span>
                                 </div>
                             </a>

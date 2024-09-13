@@ -66,10 +66,10 @@
             "sub_fields": [
                 {
                     "key": "field_66c33f4e48c58",
-                    "label": "Nombre de cours",
-                    "name": "course_quantity",
+                    "label": "Type de carte",
+                    "name": "card_type",
                     "aria-label": "",
-                    "type": "number",
+                    "type": "text",
                     "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
@@ -79,10 +79,9 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "min": "",
-                    "max": "",
+                    "maxlength": 20,
+                    "allow_in_bindings": 1,
                     "placeholder": "",
-                    "step": "",
                     "prepend": "",
                     "append": "",
                     "parent_repeater": "field_66c33f2d48c57"
@@ -106,6 +105,28 @@
                     "max": "",
                     "placeholder": "",
                     "step": 1,
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66c33f2d48c57"
+                },
+                {
+                    "key": "field_66e3e45926138",
+                    "label": "Description",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Assistez à 20 cours pour 18€ \/ cours",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": 50,
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
                     "prepend": "",
                     "append": "",
                     "parent_repeater": "field_66c33f2d48c57"
@@ -151,5 +172,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724072950
+    "modified": 1726211492
 }

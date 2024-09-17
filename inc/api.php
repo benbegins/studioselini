@@ -158,7 +158,7 @@ function send_email($request) {
     $subject = 'Nouveau message de ' . $name . ' via le site Studio Selini';
     $body = '<p><strong>Nom :</strong> ' . $name . '</p>';
     $body .= '<p><strong>Email :</strong> ' . $email . '</p>';
-    $body .= '<p><strong>Message :</strong> ' . nl2br($message) . '</p>';
+    $body .= '<p><strong>Message :</strong><br> ' . nl2br($message) . '</p>';
 
     $headers = array(
         'From: ' . $name . ' <' . $email . '>',

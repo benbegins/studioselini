@@ -151,8 +151,7 @@ function send_email($request) {
     $message = sanitize_textarea_field( $request['message'] );
 
     // Get the email address from the options page
-    // $email_selini = get_field('email', 'options');
-    $email_selini = "benoit.beghyn@gmail.com";
+    $email_selini = get_field('email', 'options');
 
     $to = $email_selini;
     $subject = 'Nouveau message de ' . $name . ' via le site Studio Selini';

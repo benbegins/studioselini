@@ -7,7 +7,7 @@ if ( ! function_exists( 'bemy_scripts' ) ) {
 
 		// Style
 		wp_enqueue_style( 'fonts', 'https://use.typekit.net/ggh8bso.css', array(), null, 'all' );
-		wp_enqueue_style( 'bemy-css', get_template_directory_uri() . '/dist/style.css', array('fonts'), wp_get_theme()->get( 'Version' ) );
+		wp_enqueue_style( 'bemy-css', get_template_directory_uri() . '/dist/style.css', array(), wp_get_theme()->get( 'Version' ) );
 		wp_enqueue_script( 'axios', "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js", array(), false, true );
 		wp_enqueue_script( 'bemy-script', get_template_directory_uri() . '/dist/init.js', array('axios'), wp_get_theme()->get( 'Version' ), true );
 		if ( is_page_template( 'template-pages/contact.php' ) ) {

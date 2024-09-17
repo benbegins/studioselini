@@ -7,6 +7,7 @@ import { Courses } from "./js/components/Courses"
 import { Planning } from "./js/components/Planning"
 import { Contact } from "./js/components/Contact"
 import { Intro } from "./js/components/Intro"
+import { HomeAnim } from "./js/components/HomeAnim"
 import Parallax from "./js/components/Parallax"
 import Buttons from "./js/components/buttons"
 
@@ -18,6 +19,7 @@ createApp({
 	Planning,
 	Contact,
 	Intro,
+	HomeAnim,
 }).mount()
 
 const init = () => {

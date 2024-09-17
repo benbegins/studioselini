@@ -28,6 +28,7 @@ export default {
 		extend: {
 			fontSize: {
 				h1: "clamp(3.375rem, 2.98rem + 1.69vw, 4.5rem)",
+				h1mobile: "2.2rem",
 				h2: "clamp(1.75rem, 1.3099rem + 1.8779vw, 3rem)",
 				"body-xl": "clamp(1.5rem, 1.324rem + 0.751vw, 2rem)",
 				"body-l": "clamp(1.25rem, 1.162rem + 0.375vw, 1.5rem)",
@@ -44,6 +45,9 @@ export default {
 			},
 			transitionTimingFunction: {
 				smooth: "cubic-bezier(0.7,0,0.45,1)",
+			},
+			animation: {
+				"spin-slow": "spin 80s linear infinite",
 			},
 		},
 	},

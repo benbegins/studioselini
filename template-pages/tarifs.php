@@ -7,8 +7,6 @@
     
  $context = Timber::context();
 
- $timber_post     = new Timber\Post();
- $context['post'] = $timber_post;
 
 
 // Get permalink of the page with template "contact"

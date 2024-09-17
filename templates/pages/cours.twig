@@ -40,7 +40,7 @@
                                             <ul class="flex items-center gap-1">
                                                 {% for teacher in teachers %}
                                                     <li>
-                                                        <button @click="clickTeacher({{teacher.id}})" class="underline lg:hover:text-terracotta">{{teacher.post_title}}</button>{% if loop.index < teachers|length %},{% endif %}
+                                                        <button @click="clickTeacher({{teacher.ID}})" class="underline lg:hover:text-terracotta">{{teacher.post_title}}</button>{% if loop.index < teachers|length %},{% endif %}
                                                     </li>
                                                 {% endfor %}
                                             </ul>

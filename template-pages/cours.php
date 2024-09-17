@@ -7,8 +7,6 @@
     
  $context = Timber::context();
 
- $timber_post     = new Timber\Post();
- $context['post'] = $timber_post;
 
 //  Get post type "course"
 $context['courses'] = Timber::get_posts( array(

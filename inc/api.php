@@ -156,9 +156,9 @@ function send_email($request) {
 
     $to = $email_selini;
     $subject = 'Nouveau message de ' . $name . ' via le site Studio Selini';
-    $body = 'Nom : ' . $name . "\n";
-    $body .= 'Email : ' . $email . "\n";
-    $body .= 'Message : ' . $message . "\n";
+    $body = '<p><strong>Nom :</strong> ' . $name . '</p>';
+    $body .= '<p><strong>Email :</strong> ' . $email . '</p>';
+    $body .= '<p><strong>Message :</strong> ' . nl2br($message) . '</p>';
 
     $headers = array(
         'From: ' . $name . ' <' . $email . '>',

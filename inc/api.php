@@ -7,24 +7,13 @@ add_filter( 'acf/rest_api/field_settings/show_in_rest', '__return_true' );
  */
 function wprc_add_acf_posts_endpoint( $allowed_endpoints ) {
     if ( ! isset( $allowed_endpoints[ 'bemy' ] ) || ! in_array( 'posts', $allowed_endpoints[ 'bemy' ] ) ) {
-        $allowed_endpoints[ 'bemy' ][] = 'planning';
         $allowed_endpoints[ 'bemy' ][] = 'reviews';
     }
     return $allowed_endpoints;
 }
 add_filter( 'wp_rest_cache/allowed_endpoints', 'wprc_add_acf_posts_endpoint', 10, 1);
 
-/**
- * Delete planning endpoint cache on course edit 
- */
-function wprc_flush_on_course_update( $post_id ) {
-    $post_type = get_post_type( $post_id );
-    if ( $post_type === 'course' ) {
-        \WP_REST_Cache_Plugin\Includes\Caching\Caching::get_instance()->delete_cache_by_endpoint( '/wp-json/bemy/planning', \WP_REST_Cache_Plugin\Includes\Caching\Caching::FLUSH_LOOSE );
-    }
-}
 
-add_action( 'save_post_course', 'wprc_flush_on_course_update', 10, 1 );
 
 /**
  * Endpoints 

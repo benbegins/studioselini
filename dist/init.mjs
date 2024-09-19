@@ -5668,7 +5668,7 @@ function mh() {
 function _h() {
   return {
     textes: {
-      text1: ["une fois par semaine,", "deux fois par semaine,", "trois fois par semaine,"],
+      text1: ["une fois par semaine,", "deux fois par semaine,", "tous les jours,"],
       text2: ["votre esprit change", "votre corps change", "votre vie change"]
     },
     classSpan: "absolute w-full text-center left-0",

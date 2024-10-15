@@ -56,7 +56,6 @@
         "author",
         "format",
         "page_attributes",
-        "featured_image",
         "categories",
         "tags",
         "send-trackbacks"
@@ -64,5 +63,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728932988
+    "modified": 1729021296
 }

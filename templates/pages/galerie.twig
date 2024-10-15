@@ -16,7 +16,7 @@
                     {% endfor %}
                 </div>
                 <div class="fixed inset-0 bg-black bg-opacity-50 z-50 cursor-pointer" v-if="openModal" @click="closeModal">
-                    <div class="absolute w-full h-full inset-0 p-16" v-if="photoSelected">
+                    <div class="absolute w-full h-full inset-0 p-6 lg:p-16" v-if="photoSelected">
                         <img :src="photoSelected ? photoSelected.media_details.sizes.full.source_url : ''" alt="" class="w-full h-full object-contain">
                     </div>
                 </div>

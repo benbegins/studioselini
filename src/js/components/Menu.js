@@ -51,7 +51,7 @@ function Menu(props) {
 				this.scrollPosition = window.scrollY
 
 				if (this.submenuOpen) {
-					this.closeAllSubmenus()
+					// this.closeAllSubmenus()
 				}
 			})
 		},
@@ -79,7 +79,7 @@ function Menu(props) {
 			const expanded = el.getAttribute("aria-expanded") === "true" || false
 
 			if (this.submenuOpen && window.innerWidth >= 1024) {
-				this.closeAllSubmenus()
+				// this.closeAllSubmenus()
 			}
 
 			if (!expanded) {
@@ -103,8 +103,11 @@ function Menu(props) {
 			if (submenus.length === 0) return
 			if (btnSubmenus.length === 0) return
 
+			this.submenuOpen = false
+
 			submenus.forEach((submenu) => {
 				submenu.style.height = 0
+
 				submenu.setAttribute("aria-hidden", true)
 			})
 			btnSubmenus.forEach((btnSubmenu) => {

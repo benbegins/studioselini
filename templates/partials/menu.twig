@@ -1,23 +1,26 @@
 {% if items %}
-    
-        {% for item in items %}
-            <li class="{{ item.classes | join(' ') }}">
-                {% if item.children %}
-                    <button class="btn-submenu cursor-pointer uppercase flex items-center gap-4 lg:hover:text-terracotta" @click="toggleSubmenu($el)" aria-label="Open submenu {{item.title}}" aria-expanded="false" aria-controls="submenu-{{item.slug}}">
+    {% for item in items %}
+        <li class="{{ item.classes | join(' ') }}">
+            {% if item.children %}
+                <div v-scope="ToggleElement()" @vue:mounted="closeOnScroll">
+                    <button class="btn-submenu cursor-pointer uppercase flex items-center gap-2 lg:hover:text-terracotta" @click="isOpen = !isOpen" aria-label="Open submenu {{item.title}}" aria-expanded="false" aria-controls="submenu-{{item.slug}}">
                         {{ item.title }}
-                        <svg class="flex-none stroke-black" xmlns="http://www.w3.org/2000/svg" width="11.414" height="6.415" viewBox="0 0 11.414 6.415">
-                            <g id="Groupe_641" data-name="Groupe 641" transform="translate(21431.752 23737.889)">
-                                <line id="Ligne_23" data-name="Ligne 23" y2="7.072" transform="translate(-21421.045 -23737.182) rotate(45)" stroke-linecap="round" stroke-width="1.5"/>
-                                <line id="Ligne_24" data-name="Ligne 24" y1="7.071" transform="translate(-21426.045 -23732.182) rotate(135)" stroke-linecap="round" stroke-width="1.5"/>
-                            </g>
-                        </svg>
+                        <div class="transition-transform duration-300" :class="{'rotate-180' : isOpen}">
+                            <svg class="flex-none stroke-black" xmlns="http://www.w3.org/2000/svg" width="11.414" height="6.415" viewBox="0 0 11.414 6.415">
+                                <g id="Groupe_641" data-name="Groupe 641" transform="translate(21431.752 23737.889)">
+                                    <line id="Ligne_23" data-name="Ligne 23" y2="7.072" transform="translate(-21421.045 -23737.182) rotate(45)" stroke-linecap="round" stroke-width="1.5"/>
+                                    <line id="Ligne_24" data-name="Ligne 24" y1="7.071" transform="translate(-21426.045 -23732.182) rotate(135)" stroke-linecap="round" stroke-width="1.5"/>
+                                </g>
+                            </svg>
+                        </div>
                     </button>
-                    <ul id="submenu-{{item.slug}}" class="site-header__submenu lg:absolute overflow-hidden h-0 transition-all duration-500" aria-hidden="true">
+                    <ul v-if="isOpen" id="submenu-{{item.slug}}" class="site-header__submenu flex flex-col gap-2 pt-2 pl-4 lg:px-4 lg:pb-2.5 lg:pt-3.5 lg:bg-white lg:shadow-md lg:rounded-md lg:absolute overflow-hidden transition-all duration-500" aria-hidden="true">
                         {% include "partials/menu.twig" with {'items': item.children} %}
                     </ul>
-                {% else %}
-                    <a href="{{ item.link }}">{{ item.title }}</a>
-                {% endif %}
-            </li>
-        {% endfor %}
+                </div>
+            {% else %}
+                <a href="{{ item.link }}">{{ item.title }}</a>
+            {% endif %}
+        </li>
+    {% endfor %}
 {% endif %}

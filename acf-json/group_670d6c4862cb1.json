@@ -1,0 +1,68 @@
+{
+    "key": "group_670d6c4862cb1",
+    "title": "Page galerie",
+    "fields": [
+        {
+            "key": "field_670d6c4874fe2",
+            "label": "Galerie",
+            "name": "galerie",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "medium"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_template",
+                "operator": "==",
+                "value": "template-pages\/galerie.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "permalink",
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1728932988
+}

@@ -1,12 +1,15 @@
 .site-header {
-	.current-menu-item {
+	.site-header__menu > .current-menu-item > a {
 		@apply text-terracotta lg:text-black relative after:hidden after:absolute lg:after:block after:w-1 after:h-1 after:rounded-full after:bg-black after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:translate-y-3;
 	}
 
-	.menu-item {
-		a:hover,
-		button:hover {
-			@apply relative after:hidden after:absolute lg:after:block after:w-1 after:h-1 after:rounded-full after:border after:border-black after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:translate-y-3;
+	.site-header__menu > .menu-item > a:hover {
+		@apply relative after:hidden after:absolute lg:after:block after:w-1 after:h-1 after:rounded-full after:border after:border-black after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:translate-y-3;
+	}
+
+	.site-header__submenu {
+		a:hover {
+			@apply lg:text-terracotta;
 		}
 	}
 }

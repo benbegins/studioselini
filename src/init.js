@@ -8,6 +8,8 @@ import { Planning } from "./js/components/Planning"
 import { Contact } from "./js/components/Contact"
 import { Intro } from "./js/components/Intro"
 import { HomeAnim } from "./js/components/HomeAnim"
+import { Gallery } from "./js/components/Gallery"
+import { ToggleElement } from "./js/components/ToggleElement"
 import Parallax from "./js/components/Parallax"
 import Buttons from "./js/components/buttons"
 
@@ -20,6 +22,8 @@ createApp({
 	Contact,
 	Intro,
 	HomeAnim,
+	Gallery,
+	ToggleElement,
 }).mount()
 
 const init = () => {

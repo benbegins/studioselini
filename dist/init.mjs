@@ -5442,13 +5442,14 @@ function fh(n) {
 function dh() {
   return {
     reviews: [],
+    totalReviews: null,
     apiUrl: "/wp-json/bemy/reviews",
     maxTextLength: 200,
     slider: null,
     sliderContainer: null,
     initReviews(n) {
       axios.get(this.apiUrl).then((e) => {
-        this.reviews = e.data.result.reviews, this.initSlider(n);
+        this.reviews = e.data.reviews, this.totalReviews = e.data.total_reviews, this.initSlider(n);
       }).catch((e) => {
         console.log(e);
       });

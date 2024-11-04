@@ -7,6 +7,7 @@ import "swiper/css/pagination"
 function Reviews() {
 	return {
 		reviews: [],
+		totalReviews: null,
 		apiUrl: "/wp-json/bemy/reviews",
 		maxTextLength: 200,
 		slider: null,
@@ -17,7 +18,8 @@ function Reviews() {
 			axios
 				.get(this.apiUrl)
 				.then((response) => {
-					this.reviews = response.data.result.reviews
+					this.reviews = response.data.reviews
+					this.totalReviews = response.data.total_reviews
 					this.initSlider(el)
 				})
 				.catch((error) => {

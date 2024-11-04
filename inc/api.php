@@ -5,13 +5,13 @@ add_filter( 'acf/rest_api/field_settings/show_in_rest', '__return_true' );
 /**
  * Cache endpoint 
  */
-function wprc_add_acf_posts_endpoint( $allowed_endpoints ) {
-    if ( ! isset( $allowed_endpoints[ 'bemy' ] ) || ! in_array( 'posts', $allowed_endpoints[ 'bemy' ] ) ) {
-        $allowed_endpoints[ 'bemy' ][] = 'reviews';
-    }
-    return $allowed_endpoints;
-}
-add_filter( 'wp_rest_cache/allowed_endpoints', 'wprc_add_acf_posts_endpoint', 10, 1);
+// function wprc_add_acf_posts_endpoint( $allowed_endpoints ) {
+//     if ( ! isset( $allowed_endpoints[ 'bemy' ] ) || ! in_array( 'posts', $allowed_endpoints[ 'bemy' ] ) ) {
+//         $allowed_endpoints[ 'bemy' ][] = 'reviews';
+//     }
+//     return $allowed_endpoints;
+// }
+// add_filter( 'wp_rest_cache/allowed_endpoints', 'wprc_add_acf_posts_endpoint', 10, 1);
 
 
 
@@ -77,10 +77,32 @@ function register_reviews_route() {
 function get_reviews() {
     $place_id = STUDIO_SELINE_PLACE_ID;
     $api_key = GOOGLE_API_KEY;
-    $url = "https://maps.googleapis.com/maps/api/place/details/json?place_id=$place_id&fields=reviews&key=$api_key&language=fr";
-    $response = wp_remote_get( $url );
-    $body = wp_remote_retrieve_body( $response );
-    return json_decode( $body );
+    // $url = "https://maps.googleapis.com/maps/api/place/details/json?place_id=$place_id&fields=reviews&key=$api_key&language=fr";
+    // $response = wp_remote_get( $url );
+    // $body = wp_remote_retrieve_body( $response );
+    // return json_decode( $body );
+
+    $url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=$place_id&key=$api_key&language=fr&fields=reviews,user_ratings_total";
+    
+    $response = wp_remote_get($url);
+    
+    if (is_wp_error($response)) {
+        return [
+            'reviews' => [],
+            'total_reviews' => 0
+        ];
+    }
+    
+    $body = wp_remote_retrieve_body($response);
+    $data = json_decode($body, true);
+    
+    $total_reviews = isset($data['result']['user_ratings_total']) ? $data['result']['user_ratings_total'] : 0;
+    $reviews = isset($data['result']['reviews']) ? $data['result']['reviews'] : [];
+    
+    return [
+        'reviews' => $reviews,
+        'total_reviews' => $total_reviews
+    ];
 }
 
 function get_planning(){

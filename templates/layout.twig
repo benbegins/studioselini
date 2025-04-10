@@ -15,10 +15,11 @@
 
     {% include "header.twig" %}
 
-    <div v-scope="Intro()" class="pointer-events-none" @vue:mounted="init($el)" >
-        <div v-show="showIntro" class="intro__bg bg-white fixed w-full h-full top-0 left-0 z-50 flex justify-center items-center">
-            <img class="w-52 opacity-0" src="{{theme.uri}}/src/images/logo-studio-selini.svg" alt="Logo Studio Selini">
-        </div>
+    <div v-scope="Intro()" class="pointer-events-none" @vue:mounted="init($el)">
+        <svg class="transition fixed z-50 inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="path fill-white" vector-effect="non-scaling-stroke" d="M 0 0 V 100 Q 50 100 100 100 V 0 z" />
+        </svg>
+        <div class="transition-overlay fixed z-40 w-full h-full inset-0 bg-black pointer-events-none opacity-0"></div>
     </div>
 
     <main id="content" role="main" class="pt-40 relative overflow-clip">
@@ -28,8 +29,6 @@
     </main>
 
     {% include 'footer.twig' %}
-
-    
 
     {{ function('wp_footer') }}
 </body>

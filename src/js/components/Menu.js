@@ -17,13 +17,13 @@ function Menu(props) {
 
 				button.setAttribute("aria-expanded", true)
 				this.$refs.nav.classList.add("-translate-x-full")
-				this.$refs.nav.setAttribute("aria-hidden", false)
+				// this.$refs.nav.setAttribute("aria-hidden", false)
 			} else {
 				document.body.style.overflow = "auto"
 
 				button.setAttribute("aria-expanded", false)
 				this.$refs.nav.classList.remove("-translate-x-full")
-				this.$refs.nav.setAttribute("aria-hidden", true)
+				// this.$refs.nav.setAttribute("aria-hidden", true)
 
 				this.closeAllSubmenus()
 			}

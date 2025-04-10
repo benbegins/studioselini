@@ -14,7 +14,7 @@
                             </svg>
                         </div>
                     </button>
-                    <ul v-if="isOpen" id="submenu-{{item.slug}}" class="site-header__submenu flex flex-col gap-2 pt-2 pl-4 lg:px-4 lg:pb-2.5 lg:pt-3.5 lg:bg-white lg:shadow-md lg:rounded-md lg:absolute overflow-hidden transition-all duration-500" aria-hidden="true">
+                    <ul v-show="isOpen" id="submenu-{{item.slug}}" class="site-header__submenu flex flex-col gap-2 pt-2 pl-4 lg:px-4 lg:pb-2.5 lg:pt-3.5 lg:bg-white lg:shadow-md lg:rounded-md lg:absolute overflow-hidden transition-all duration-500" aria-hidden="true">
                         {% include "partials/menu.twig" with {'items': item.children} %}
                     </ul>
                 </div>

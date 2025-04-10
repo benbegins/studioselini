@@ -18,7 +18,7 @@
                         {% include "components/btns.twig" with {primary: true, text: "Je réserve", url: options.bsport, target_blank: true} %}
                     {% endif %}
                     {% if studio_page_url %}
-                        {% include "components/btns.twig" with {secondary: true, text: "Découvrir le studio", url: studio_page_url} %}
+                        {% include "components/btns.twig" with {secondary: true, text: "Découvrir le studio", url: options.pages.studio} %}
                     {% endif %}
                 </div>
 

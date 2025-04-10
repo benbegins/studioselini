@@ -63,7 +63,7 @@
                 </li>
                 <li class="flex flex-col items-center gap-6">
                     <img src="{{theme.uri}}/src/images/illu-yoga-2.svg" alt="Illu Yoga" class="w-40">
-                    <p class="lg:px-16">Nous proposons des formules adaptées pour plusieurs séances. Consultez nos <a class="underline lg:hover:text-terracotta" href="{{tarifs_page_url}}">tarifs</a> ou demandez-nous directement lors de votre visite.</p>
+                    <p class="lg:px-16">Nous proposons des formules adaptées pour plusieurs séances. Consultez nos <a class="underline lg:hover:text-terracotta" href="{{options.pages.tarifs}}">tarifs</a> ou demandez-nous directement lors de votre visite.</p>
                 </li>
                 <li class="flex flex-col items-center gap-6">
                     <img src="{{theme.uri}}/src/images/illu-yoga-3.svg" alt="Illu Yoga" class="w-40">
@@ -79,6 +79,6 @@
     </section>
 
 
-    {% include "components/section-footer-link.twig" with {title: "Les cours", subtitle: "Découvrez tous les cours du studio", button_text: "Découvrir", button_url: cours_page_url} %}
+    {% include "components/section-footer-link.twig" with {title: "Les cours", subtitle: "Découvrez tous les cours du studio", button_text: "Découvrir", button_url: options.pages.cours} %}
     
 {% endblock %}

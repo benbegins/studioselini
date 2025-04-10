@@ -53,13 +53,13 @@
                 </li>
                 <li class="flex flex-col items-center gap-6">
                     <img src="{{theme.uri}}/src/images/illu-yoga-3.svg" alt="Illu Yoga" class="w-40">
-                    <p class="lg:px-16">N’hésitez pas à nous <a class="underline lg:hover:text-terracotta" href="{{contact_page_url}}">contacter</a> par téléphone, Instagram ou email si vous avez la moindre question.</p>
+                    <p class="lg:px-16">N’hésitez pas à nous <a class="underline lg:hover:text-terracotta" href="{{options.pages.contact}}">contacter</a> par téléphone, Instagram ou email si vous avez la moindre question.</p>
                 </li>
             </ul>
         </div>
     </section>
 
-    {% include "components/section-footer-link.twig" with {title: "Horaires", subtitle: "Consultez notre planning hebdomadaire", button_text: "Consulter", button_url: planning_page_url} %}
+    {% include "components/section-footer-link.twig" with {title: "Horaires", subtitle: "Consultez notre planning hebdomadaire", button_text: "Consulter", button_url: options.pages.planning} %}
 
 
 {% endblock %}

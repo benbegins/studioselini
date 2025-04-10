@@ -1,5 +1,7 @@
 import "./styles/main.css"
-
+// Libraries
+import Lenis from "lenis"
+// Components
 import { createApp } from "petite-vue"
 import { Menu } from "./js/components/Menu"
 import { Reviews } from "./js/components/Reviews"
@@ -27,6 +29,9 @@ createApp({
 }).mount()
 
 const init = () => {
+	const lenis = new Lenis({
+		autoRaf: true,
+	})
 	new Parallax()
 	new Buttons(".btn-primary")
 	new Buttons(".btn-secondary")

@@ -41,7 +41,7 @@ function Reviews() {
 				},
 				centeredSlides: true,
 				autoHeight: true,
-				speed: 450,
+				speed: 600,
 				slidesPerView: 1,
 				spaceBetween: 24,
 			})

@@ -407,6 +407,7 @@ __metadata:
   dependencies:
     autoprefixer: "npm:^10.4.14"
     gsap: "npm:^3.12.5"
+    lenis: "npm:^1.2.3"
     petite-vue: "npm:^0.4.1"
     postcss: "npm:^8.4.27"
     postcss-nesting: "npm:^12.1.5"
@@ -1092,6 +1093,24 @@ __metadata:
   version: 1.1.0
   resolution: "jsbn@npm:1.1.0"
   checksum: 4f907fb78d7b712e11dea8c165fe0921f81a657d3443dde75359ed52eb2b5d33ce6773d97985a089f09a65edd80b11cb75c767b57ba47391fee4c969f7215c96
+  languageName: node
+  linkType: hard
+
+"lenis@npm:^1.2.3":
+  version: 1.2.3
+  resolution: "lenis@npm:1.2.3"
+  peerDependencies:
+    "@nuxt/kit": ">=3.0.0"
+    react: ">=17.0.0"
+    vue: ">=3.0.0"
+  peerDependenciesMeta:
+    "@nuxt/kit":
+      optional: true
+    react:
+      optional: true
+    vue:
+      optional: true
+  checksum: 267d73e426b69411ad19b150fcc72a8c61f9617fd49910201e093860a978597cd6a04f574e93e1ccddcd7558b744e759fe4653f0591485fdb869d8400c90eea9
   languageName: node
   linkType: hard
 

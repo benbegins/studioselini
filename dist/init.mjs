@@ -6404,7 +6404,6 @@ function Lp() {
       window.location.href = e;
     },
     removeIntro() {
-      console.log("remove intro");
       const r = "M 0 0 V 0 Q 50 0 100 0 V 0 z";
       ue.set(this.path, { attr: { d: r } }), ue.set(this.page, { opacity: 1 }), ue.set(this.overlay, { opacity: 0 });
     }

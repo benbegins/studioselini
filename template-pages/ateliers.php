@@ -14,8 +14,16 @@ $context['workshops'] = Timber::get_posts( array(
   'posts_per_page' => -1,
   'meta_key' => 'date',
   'orderby' => 'meta_value',
-  'order' => 'ASC'
-) );
+  'order' => 'ASC',
+  'meta_query' => array(
+    array(
+      'key' => 'date',
+      'value' => date('Y-m-d'),
+      'compare' => '>',
+      'type' => 'DATE'
+    )
+  )
+));
 
 // Get permalink of the page with template "studio"
 $args = array(

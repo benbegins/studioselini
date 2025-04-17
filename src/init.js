@@ -15,6 +15,10 @@ import { ToggleElement } from "./js/components/ToggleElement"
 import Parallax from "./js/components/Parallax"
 import Buttons from "./js/components/buttons"
 
+const lenis = new Lenis({
+	autoRaf: true,
+})
+
 createApp({
 	$delimiters: ["[[", "]]"],
 	Menu,
@@ -26,12 +30,10 @@ createApp({
 	HomeAnim,
 	Gallery,
 	ToggleElement,
+	lenis,
 }).mount()
 
 const init = () => {
-	const lenis = new Lenis({
-		autoRaf: true,
-	})
 	new Parallax()
 	new Buttons(".btn-primary")
 	new Buttons(".btn-secondary")

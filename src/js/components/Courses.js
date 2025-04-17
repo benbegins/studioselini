@@ -1,3 +1,5 @@
+import Lenis from "lenis"
+
 function Courses() {
 	return {
 		popinOpen: false,
@@ -13,6 +15,7 @@ function Courses() {
 			// Reset the teacher object
 			this.resetTeacher()
 			// body overflow hidden
+			this.lenis.destroy()
 			document.body.style.overflow = "hidden"
 			// Open the popin
 			this.popinOpen = true
@@ -52,6 +55,9 @@ function Courses() {
 		closePopin() {
 			this.popinOpen = false
 			document.body.style.overflow = "auto"
+			this.lenis = new Lenis({
+				autoRaf: true,
+			})
 		},
 
 		resetTeacher() {

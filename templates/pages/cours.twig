@@ -27,7 +27,11 @@
                             <li id="{{course.slug}}" class="course-item grid gap-6 md:grid-cols-12 md:gap-16 items-start">
                                 {# Image #}
                                 <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl md:col-span-5">
-                                    {{ function('wp_get_attachment_image', course.thumbnail.id, 'medium_large', false, {class: "w-full h-full object-cover"}) }}
+                                    {% if course.thumbnail %}
+                                        {{ function('wp_get_attachment_image', course.thumbnail.id, 'medium_large', false, {class: "w-full h-full object-cover"}) }}
+                                    {% elseif options.placeholder %}
+                                        {{ function('wp_get_attachment_image', options.placeholder.id, 'medium_large', false, {class: "w-full h-full object-cover"}) }}
+                                    {% endif %}
                                 </div>
                                 {# Text #}
                                 <div class="grid gap-2 md:col-span-7">

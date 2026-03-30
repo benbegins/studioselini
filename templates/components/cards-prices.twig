@@ -1,0 +1,22 @@
+{% if cards %}
+    {% for card in cards %}
+        <li>
+            <div class="rounded-2xl border border-black bg-white min-h-[18rem] lg:min-h-[20rem] flex flex-col justify-between p-6">
+                <div>
+                    <p class="text-white text-btn font-sans uppercase bg-black rounded-md px-2 pb-1 pt-1.5 leading-none inline-block">{{card.card_type}}</p>
+                    <p class="text-h2 font-titling-display leading-tight">{{card.price}} €</p>
+                    <p class="font-serif pt-6">{{card.description}}</p>
+                </div>
+                <div>
+                    {{ include('components/btns.twig', {
+                        primary: true,
+                        text: "Acheter",
+                        url: card.buy_link ? card.buy_link : options.bsport,
+                        target_blank: true,
+                        class: "w-full font-"
+                    }) }}
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+{% endif %}

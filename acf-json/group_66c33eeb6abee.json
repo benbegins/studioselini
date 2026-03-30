@@ -44,7 +44,7 @@
         },
         {
             "key": "field_66c33f2d48c57",
-            "label": "Cartes",
+            "label": "Cartes Yoga",
             "name": "cards",
             "aria-label": "",
             "type": "repeater",
@@ -150,6 +150,228 @@
                     "parent_repeater": "field_66c33f2d48c57"
                 }
             ]
+        },
+        {
+            "key": "field_69cac2940c6a4",
+            "label": "Cartes Reformer",
+            "name": "cards_reformer",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Ajouter un élément",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_69cac2940c6a5",
+                    "label": "Type de carte",
+                    "name": "card_type",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": 20,
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_69cac2940c6a4"
+                },
+                {
+                    "key": "field_69cac2940c6a6",
+                    "label": "Prix",
+                    "name": "price",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "step": 1,
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_69cac2940c6a4"
+                },
+                {
+                    "key": "field_69cac2940c6a7",
+                    "label": "Description",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Assistez à 20 cours pour 18€ \/ cours",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": 50,
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_69cac2940c6a4"
+                },
+                {
+                    "key": "field_69cac2940c6a8",
+                    "label": "Lien d'achat Bsport",
+                    "name": "buy_link",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "parent_repeater": "field_69cac2940c6a4"
+                }
+            ]
+        },
+        {
+            "key": "field_69cac2a40c6a9",
+            "label": "Cartes Mixtes",
+            "name": "cards_mixtes",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Ajouter un élément",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_69cac2a40c6aa",
+                    "label": "Type de carte",
+                    "name": "card_type",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": 20,
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_69cac2a40c6a9"
+                },
+                {
+                    "key": "field_69cac2a40c6ab",
+                    "label": "Prix",
+                    "name": "price",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "step": 1,
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_69cac2a40c6a9"
+                },
+                {
+                    "key": "field_69cac2a40c6ac",
+                    "label": "Description",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Assistez à 20 cours pour 18€ \/ cours",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": 50,
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_69cac2a40c6a9"
+                },
+                {
+                    "key": "field_69cac2a40c6ad",
+                    "label": "Lien d'achat Bsport",
+                    "name": "buy_link",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "parent_repeater": "field_69cac2a40c6a9"
+                }
+            ]
         }
     ],
     "location": [
@@ -172,5 +394,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726211492
+    "display_title": "",
+    "modified": 1774895795
 }

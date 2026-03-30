@@ -3,8 +3,8 @@
 {% block content %}
 
     <section class="pb-section lg:pt-16">
-        <div class="container grid gap-16 lg:gap-6 lg:grid-cols-2 relative z-20">
-            <div class="flex flex-col text-center items-center lg:items-start lg:text-left lg:w-5/6">
+        <div class="container">
+            <div class="flex flex-col text-center items-center lg:w-1/2 lg:mx-auto">
                 <h1 class="font-titling-display text-terracotta text-h1 leading-none mb-4">Nos tarifs</h1>
                 <h2 class="text-body-l">{{post.meta('introduction')}}</h2>
                 <div class="pt-6 enriched-text">{{post.meta('presentation')}}</div>
@@ -14,29 +14,56 @@
                     <p><sup>(3)</sup> Notre studio sera fermé du 15/07 au 01/09.</p>
                 </div>
             </div>
-            <div>
-                <ul class="grid gap-6 md:grid-cols-2">
-                    {% set cards = post.meta('cards') %}
-                    {% for card in cards %}
-                        <li>
-                            <a href="{{card.buy_link ? card.buy_link : options.bsport}}" class="rounded-2xl border border-black bg-white min-h-[18rem] lg:min-h-[20rem] flex flex-col justify-between p-6 hover:text-terracotta hover:bg-[#DBD2CE] group" target="_blank" rel="nofollow">
-                                <h3 class="text-btn uppercase font-sans">Carte {{card.card_type}}</h3>
-                                <div>
-                                    <p class="text-white bg-black rounded-md px-2 pb-1 pt-1.5 leading-none inline-block transition-colors duration-200 group-hover:bg-terracotta">{{card.price}} €</p>
-                                    <p class="text-body-xl font-titling-subhead leading-tight pt-2">{{card.description}}</p>
-                                    <span class="inline-block pt-1 font-sans text-btn uppercase text-terracotta underline">Acheter</span>
-                                </div>
-                            </a>
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
         </div>
         {# Mandala #}
-        <div data-parallax data-speed="20"><img src="{{theme.uri}}/src/images/mandala.svg" alt="" class="max-w-none -z-10 opacity-10 absolute w-[500px] -top-[350px] left-[calc(50%-250px)] md:w-[700px] md:-top-[350px] md:left-[calc(50%-350px)] lg:w-[1024px] lg:-top-[680px] lg:left-1/2"></div>
-        {# BG Gradient #}
-        <div class="pointer-events-none absolute z-10 opacity-50 w-[250vw] h-[250vw] top-0 left-0 -translate-x-1/3 -translate-y-1/3 lg:w-[100vw] lg:h-[100vw]" style="background: radial-gradient(50% 50% at 50% 50%, #BFA597 0%, rgba(191, 165, 151, 0.00) 100%);"></div>
+        {% if align == "left" %}
+            <div data-parallax data-speed="20"><img src="{{theme.uri}}/src/images/mandala.svg" loading="lazy" alt="" class="max-w-none -z-10 opacity-10 absolute w-[500px] -top-[350px] left-[calc(50%-250px)] md:w-[700px] md:-top-[350px] md:left-[calc(50%-350px)] lg:w-[1024px] lg:-top-[680px] lg:left-1/2"></div>
+            {# BG Gradient #}
+            <div class="pointer-events-none absolute z-10 opacity-50 w-[250vw] h-[250vw] top-0 left-0 -translate-x-1/3 -translate-y-1/3 lg:w-[100vw] lg:h-[100vw]" style="background: radial-gradient(50% 50% at 50% 50%, #BFA597 0%, rgba(191, 165, 151, 0.00) 100%);"></div>
+        {% else %}
+            <div data-parallax data-speed="20"><img src="{{theme.uri}}/src/images/mandala.svg" loading="lazy" alt="" class="max-w-none -z-10 opacity-10 absolute w-[500px] -top-[350px] left-[calc(50%-250px)] md:w-[700px] md:-top-[350px] md:left-[calc(50%-350px)] lg:w-[1024px] lg:-top-[680px] lg:left-[calc(50%-512px)]"></div>
+        {% endif %}
+    </section>
+
+    {% if image %}
+        {{include('components/img-mask.twig', {imageID: image})}}
+    {% endif %}
+
+    <section class="pb-section">
+        <div class="container flex flex-col gap-12 lg:gap-24">
+            {# Cartes Yoga #}
+            {% set cards = post.meta('cards') %}
+            {% if cards %}
+                <div>
+                    <h2 class="text-body-xl pb-4">Yoga & Pilates mat</h2>
+                    <ul class="grid gap-6 md:grid-cols-3 lg:grid-cols-4">
+                        {{ include('components/cards-prices.twig', {cards: cards}) }}
+                    </ul>
+                </div>
+            {% endif %}
+
+            {# Cartes Reformer #}
+            {% set cards = post.meta('cards_reformer') %}
+            {% if cards %}
+                <div>
+                    <h2 class="text-body-xl pb-4">Reformer Pilates</h2>
+                    <ul class="grid gap-6 md:grid-cols-3 lg:grid-cols-4">
+                        {{ include('components/cards-prices.twig', {cards: cards}) }}
+                    </ul>
+                </div>
+            {% endif %}
+
+            {# Cartes Mixtes #}
+            {% set cards = post.meta('cards_mixtes') %}
+            {% if cards %}
+                <div>
+                    <h2 class="text-body-xl pb-4">Cartes Mixtes</h2>
+                    <ul class="grid gap-6 md:grid-cols-3 lg:grid-cols-4">
+                        {{ include('components/cards-prices.twig', {cards: cards}) }}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
     </section>
 
     {# Réassurance #}
@@ -48,7 +75,7 @@
                     <p class="lg:px-16">N’hésitez pas à apporter votre propre tapis. Dans le cas contraire, le matériel de yoga est fourni par le studio (sauf ateliers).</p>
                 </li>
                 <li class="flex flex-col items-center gap-6">
-                    <img src="{{theme.uri}}/src/images/illu-yoga-2.svg" alt="Illu Yoga" class="w-40">
+                    <img src="{{theme.uri}}/src/images/illu-reformers-02.svg" alt="Illu Yoga" class="w-40">
                     <p class="lg:px-16">Votre carte est automatiquement recréditée si vous annulez un cours jusqu’à 12h avant.</p>
                 </li>
                 <li class="flex flex-col items-center gap-6">

@@ -5,6 +5,7 @@ export default {
 		colors: {
 			black: "#18100A",
 			white: "#E4E0DF",
+			light: "#DBD2CE",
 			pink: "#BFA597",
 			terracotta: "#A25448",
 			transparent: "transparent",

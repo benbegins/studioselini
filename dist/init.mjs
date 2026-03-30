@@ -3437,7 +3437,7 @@ function oh(r) {
     },
     scrollEvent(e) {
       this.siteHeader = e, window.addEventListener("scroll", () => {
-        window.scrollY > 100 ? (this.menuIsScrolling = !0, window.scrollY < this.scrollPosition ? this.displayMenu !== !0 && this.toggleHeader(e, !0) : this.displayMenu !== !1 && this.toggleHeader(e, !1)) : this.menuIsScrolling = !1, this.scrollPosition = window.scrollY, this.submenuOpen;
+        window.scrollY > 100 ? this.menuIsScrolling = !0 : this.menuIsScrolling = !1, this.scrollPosition = window.scrollY, this.submenuOpen;
       });
     },
     toggleHeader(e, t) {

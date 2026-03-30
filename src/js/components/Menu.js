@@ -38,11 +38,11 @@ function Menu(props) {
 					// Set menuIsScrolling to true
 					this.menuIsScrolling = true
 					// Toggle header on scroll direction
-					if (window.scrollY < this.scrollPosition) {
-						this.displayMenu !== true ? this.toggleHeader(el, true) : null
-					} else {
-						this.displayMenu !== false ? this.toggleHeader(el, false) : null
-					}
+					// if (window.scrollY < this.scrollPosition) {
+					// 	this.displayMenu !== true ? this.toggleHeader(el, true) : null
+					// } else {
+					// 	this.displayMenu !== false ? this.toggleHeader(el, false) : null
+					// }
 				} else {
 					// Set menuIsScrolling to false
 					this.menuIsScrolling = false

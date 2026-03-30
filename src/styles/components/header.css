@@ -4,7 +4,7 @@
 	}
 
 	.site-header__menu > .menu-item > a:hover {
-		@apply relative after:hidden after:absolute lg:after:block after:w-1 after:h-1 after:rounded-full after:border after:border-black after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:translate-y-3;
+		@apply lg:text-terracotta;
 	}
 
 	.site-header__submenu {

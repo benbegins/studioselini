@@ -6,7 +6,7 @@
  #}
  {% if title and subtitle and button_text and button_url %}
     <section class="pt-section pb-20 bg-pink bg-opacity-20 relative mask-section-footer">
-        <div class="container pt-20 relative z-10">
+        <div class="container relative z-10 flex flex-col items-center">
             <h2 class="font-sans text-btn uppercase">{{title}}</h2>
             <p class="font-titling-subhead text-body-xl mb-3">{{subtitle}}</p>
             {% include "components/btns.twig" with {secondary: true, black: true, text: button_text, url: button_url} %}

@@ -6473,10 +6473,10 @@ function Ip() {
       return this.isOpen ? r.scrollHeight + "px" : 0;
     },
     closeOnOutsideClick(r) {
-      this.el && !this.el.contains(r.target) && (this.isOpen = !1);
+      this.el && !this.el.contains(r.target) && this.isOpen && (this.isOpen = !1);
     },
     mounted(r) {
-      this.el = r, document.addEventListener("click", this.closeOnOutsideClick.bind(this));
+      this.el = r, this.closeOnScroll(), document.addEventListener("click", this.closeOnOutsideClick.bind(this));
     },
     unmounted() {
       this.el = null, document.removeEventListener("click", this.closeOnOutsideClick.bind(this));

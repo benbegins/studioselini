@@ -2,8 +2,8 @@
     {% for item in items %}
         <li class="{{ item.classes | join(' ') }}">
             {% if item.children %}
-                <div v-scope="ToggleElement()" @vue:mounted="closeOnScroll">
-                    <button class="btn-submenu cursor-pointer uppercase flex items-center gap-2 lg:hover:text-terracotta" @click="isOpen = !isOpen" aria-label="Open submenu {{item.title}}" aria-expanded="false" aria-controls="submenu-{{item.slug}}">
+                <div v-scope="ToggleElement()" @vue:mounted="mounted($el)">
+                    <button class="btn-submenu cursor-pointer uppercase flex items-center gap-2 lg:hover:text-terracotta transition-colors duration-200" :class="{'lg:text-terracotta' : isOpen}" @click="isOpen = !isOpen" aria-label="Open submenu {{item.title}}" aria-expanded="false" aria-controls="submenu-{{item.slug}}">
                         {{ item.title }}
                         <div class="transition-transform duration-300" :class="{'rotate-180' : isOpen}">
                             <svg class="flex-none stroke-black" xmlns="http://www.w3.org/2000/svg" width="11.414" height="6.415" viewBox="0 0 11.414 6.415">

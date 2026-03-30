@@ -6,12 +6,13 @@ function ToggleElement() {
 			return this.isOpen ? el.scrollHeight + "px" : 0
 		},
 		closeOnOutsideClick(event) {
-			if (this.el && !this.el.contains(event.target)) {
+			if (this.el && !this.el.contains(event.target) && this.isOpen) {
 				this.isOpen = false
 			}
 		},
 		mounted(el) {
 			this.el = el
+			this.closeOnScroll()
 			document.addEventListener("click", this.closeOnOutsideClick.bind(this))
 		},
 		unmounted() {

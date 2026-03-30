@@ -60,7 +60,7 @@
                 <ul class="grid gap-10 md:grid-cols-2 md:gap-x-6 md:gap-y-16 lg:grid-cols-3">
                     {% for teacher in teachers %}
                         {% set tags = teacher.meta('tags')|split(',') %}
-                        <li id="{{teacher.slug}}" >
+                        <li id="{{teacher.slug}}" v-scope="{ expanded: false }">
                             <div class="w-full aspect-square overflow-hidden rounded-2xl">
                                 {% if teacher.thumbnail %}
                                     {{ function('wp_get_attachment_image', teacher.thumbnail.id, 'large', false, {class: "w-full h-full object-cover"}) }}
@@ -77,7 +77,16 @@
                             </div>
                             {% endif %}
                             {% if teacher.meta('presentation') %}
-                                <p class="mt-4">{{teacher.meta('presentation')}}</p>
+                                {% set presentation = teacher.meta('presentation') %}
+                                {% if presentation|length > 350 %}
+                                    <p class="mt-4">
+                                        <span v-if="!expanded">{{presentation|slice(0, 350)}}...</span>
+                                        <span v-else>{{presentation}}</span>
+                                        <button @click="expanded = !expanded" class="underline lg:hover:text-terracotta text-left" v-text="expanded ? 'Voir moins' : 'Voir plus'"></button>
+                                    </p>
+                                {% else %}
+                                    <p class="mt-4">{{presentation}}</p>
+                                {% endif %}
                             {% endif %}
                             
                         </li>

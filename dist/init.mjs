@@ -6171,6 +6171,7 @@ function Mp() {
 function Op() {
   return {
     popinOpen: !1,
+    expandedCourses: {},
     teacher: {
       name: "",
       tags: [],
@@ -6199,6 +6200,9 @@ function Op() {
       this.popinOpen = !1, document.body.style.overflow = "auto", this.lenis = new yl({
         autoRaf: !0
       });
+    },
+    toggleCourse(r) {
+      this.expandedCourses[r] = !this.expandedCourses[r];
     },
     resetTeacher() {
       this.teacher = {

@@ -3,6 +3,27 @@
     "title": "PostType Cours",
     "fields": [
         {
+            "key": "field_69cac9d8e4359",
+            "label": "Sous titre",
+            "name": "subtitle",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_66a23d0b911f5",
             "label": "Présentation",
             "name": "presentation",
@@ -71,6 +92,27 @@
             "step": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_69cac7ce9eea2",
+            "label": "Planning Yoga ou Reformer ?",
+            "name": "is_reformer",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Permet d'afficher le bon planning",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "Reformer",
+            "ui_off_text": "Yoga",
+            "ui": 1
         }
     ],
     "location": [
@@ -92,5 +134,5 @@
     "description": "",
     "show_in_rest": 1,
     "display_title": "",
-    "modified": 1774896297
+    "modified": 1774897669
 }

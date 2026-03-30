@@ -3,6 +3,7 @@ import Lenis from "lenis"
 function Courses() {
 	return {
 		popinOpen: false,
+		expandedCourses: {},
 		teacher: {
 			name: "",
 			tags: [],
@@ -58,6 +59,10 @@ function Courses() {
 			this.lenis = new Lenis({
 				autoRaf: true,
 			})
+		},
+
+		toggleCourse(id) {
+			this.expandedCourses[id] = !this.expandedCourses[id]
 		},
 
 		resetTeacher() {

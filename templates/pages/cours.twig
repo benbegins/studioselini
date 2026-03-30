@@ -26,7 +26,7 @@
                         {% for course in courses %}
                             <li id="{{course.slug}}" class="course-item grid gap-6 md:grid-cols-12 md:gap-16 items-start">
                                 {# Image #}
-                                <div class="w-full aspect-[4/3] overflow-hidden rounded-2xl md:col-span-5">
+                                <div class="w-full aspect-square overflow-hidden rounded-2xl md:col-span-5">
                                     {% if course.thumbnail %}
                                         {{ function('wp_get_attachment_image', course.thumbnail.id, 'medium_large', false, {class: "w-full h-full object-cover"}) }}
                                     {% elseif options.placeholder %}
@@ -34,8 +34,13 @@
                                     {% endif %}
                                 </div>
                                 {# Text #}
-                                <div class="grid gap-2 md:col-span-7">
-                                    <h3 class="text-body-l">{{course.post_title}}</h3>
+                                <div class="flex flex-col gap-4 items-start md:col-span-7">
+                                    <div>
+                                        <h3 class="text-body-xl">{{course.post_title}}</h3>
+                                        {% if course.meta('subtitle') %}
+                                            <p>{{course.meta('subtitle')}}</p>
+                                        {% endif %}
+                                    </div>
 
                                     {% set teachers = course.meta('teacher') %}
                                     {% if teachers %}
@@ -51,11 +56,32 @@
                                         </div>
                                     {% endif %}
 
-                                    <p class="text-body-m">{{course.meta('presentation')}}</p>
-                                    
-                                    {% if options.bsport %}
-                                        <div class="mt-6"><a target="_blank" href="{{options.bsport}}{{course.meta('bsport_id') ? '?activity__in=' ~ course.meta('bsport_id') : ''}}" class="font-sans text-btn uppercase text-terracotta border-b border-terracotta lg:hover:text-black lg:hover:border-black">Réserver</a></div>
+                                    {% set presentation = course.meta('presentation') %}
+                                    {% if presentation|length > 450 %}
+                                        <p class="text-body-m">
+                                            <span v-if="!expandedCourses[{{course.ID}}]">{{presentation|slice(0, 450)}}...</span>
+                                            <span v-else>{{presentation}}</span>
+                                            <button @click="toggleCourse({{course.ID}})" class="underline lg:hover:text-terracotta text-left" v-text="expandedCourses[{{course.ID}}] ? 'Voir moins' : 'Voir plus'"></button>
+                                        </p>
+                                        
+                                    {% else %}
+                                        <p class="text-body-m">{{presentation}}</p>
                                     {% endif %}
+
+                                    {% set bsport_url = course.meta('is_reformer') ? options.bsport_reformers : options.bsport %}
+                                    {% if bsport_url %}
+                                        <div class="mt-6">
+                                            {{ include('components/btns.twig', {
+                                                url: bsport_url ~ (course.meta('bsport_id') ? '?activity__in=' ~ course.meta('bsport_id') : ''),
+                                                text: "Réserver",
+                                                target_blank: true,
+                                                primary: true,
+                                            }) }}
+                                        </div>
+                                    {% endif %}
+                                    
+                                    
+                                    
                                 </div>
                             </li>
                         {% endfor %}

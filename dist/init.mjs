@@ -6415,7 +6415,7 @@ function Dp() {
   return {
     textes: {
       text1: ["une fois par semaine,", "deux fois par semaine,", "tous les jours,"],
-      text2: ["votre esprit change", "votre corps change", "votre vie change"]
+      text2: ["votre corps change", "votre esprit s'apaise", "votre vie se transforme"]
     },
     classSpan: "absolute w-full text-center left-0",
     init(r) {

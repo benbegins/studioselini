@@ -14,9 +14,6 @@
                 </div>
                 
                 <div class="flex gap-2 justify-center items-center mt-4 flex-wrap">
-                    {% if options.bsport %}
-                        {% include "components/btns.twig" with {primary: true, text: "Je réserve", url: options.bsport, target_blank: true} %}
-                    {% endif %}
                     {% if studio_page_url %}
                         {% include "components/btns.twig" with {secondary: true, text: "Découvrir le studio", url: options.pages.studio} %}
                     {% endif %}
@@ -24,10 +21,10 @@
 
                 <div class="flex justify-center pointer-events-none relative z-10">
                     <img 
-                        src="{{theme.uri}}/src/images/tiffany-studio-selini.webp" 
+                        src="{{theme.uri}}/src/images/yoga_reformers.webp" 
                         loading="lazy" 
                         alt="Tiffany Studio Selíni" 
-                        class="w-[34rem] max-w-none -translate-y-2 sm:w-[50rem] sm:-translate-y-4"
+                        class="w-[30rem] max-w-none -translate-y-2 sm:w-[70rem] sm:-translate-y-4"
                     >
                 </div>
             </div>
@@ -47,7 +44,7 @@
         <div class="absolute opacity-50 -z-10 w-[250vw] h-[250vw] top-1/2 left-0 -translate-x-1/3 -translate-y-1/2 sm:w-[100vw] sm:h-[100vw] sm:-translate-y-2/3" style="background: radial-gradient(50% 50% at 50% 50%, #BFA597 0%, rgba(191, 165, 151, 0.00) 100%);"></div>
     </section>
 
-    {{ include('components/bsport.twig')}}
+
    
    {# Presentation #}
    {% set presentation = post.meta('introduction') %}

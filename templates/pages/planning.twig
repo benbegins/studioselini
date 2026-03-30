@@ -13,7 +13,9 @@
     </section>
 
     {# Planning #}
-    {{ include('components/bsport.twig')}}
+    {{ include('components/bsport.twig', {
+        calendar_id: options.id_bsport_yoga
+    })}}
 
     {# Réassurance #}
     <section class="pb-section relative z-10">
@@ -34,13 +36,13 @@
             </ul>
             {% if options.bsport %}
                 <div class="flex justify-center">
-                    {% include "components/btns.twig" with {primary: true, text: "Réserver en ligne", url: options.bsport} %}
+                    {% include "components/btns.twig" with {primary: true, text: "Réserver en ligne", url: options.bsport, target_blank: true} %}
                 </div>
             {% endif %}
         </div>
     </section>
 
 
-    {% include "components/section-footer-link.twig" with {title: "Les cours", subtitle: "Découvrez tous les cours du studio", button_text: "Découvrir", button_url: options.pages.cours} %}
+    {% include "components/section-footer-link.twig" with {title: "Pilates Reformer", subtitle: "Consulter le planning de Pilates Reformer", button_text: "Découvrir", button_url: options.pages.planning_reformers} %}
     
 {% endblock %}

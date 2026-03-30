@@ -62,7 +62,11 @@
                         {% set tags = teacher.meta('tags')|split(',') %}
                         <li id="{{teacher.slug}}" >
                             <div class="w-full aspect-square overflow-hidden rounded-2xl">
-                                {{ function('wp_get_attachment_image', teacher.thumbnail.id, 'large', false, {class: "w-full h-full object-cover"}) }}
+                                {% if teacher.thumbnail %}
+                                    {{ function('wp_get_attachment_image', teacher.thumbnail.id, 'large', false, {class: "w-full h-full object-cover"}) }}
+                                {% elseif options.placeholder %}
+                                    {{ function('wp_get_attachment_image', options.placeholder.id, 'large', false, {class: "w-full h-full object-cover"}) }}
+                                {% endif %}
                             </div>
                             <h3 class="text-body-l mt-6">{{teacher.post_title}}</h3>
                             {% if tags is not empty %}

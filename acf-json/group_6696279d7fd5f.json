@@ -21,8 +21,29 @@
             "selected": 0
         },
         {
+            "key": "field_69ca981e6502b",
+            "label": "ID BSport Yoga",
+            "name": "id_bsport_yoga",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6696279dace35",
-            "label": "BSport",
+            "label": "Calendrier BSport Yoga",
             "name": "bsport",
             "aria-label": "",
             "type": "url",
@@ -35,6 +56,46 @@
                 "id": ""
             },
             "default_value": "",
+            "allow_in_bindings": 1,
+            "placeholder": ""
+        },
+        {
+            "key": "field_69ca98306502c",
+            "label": "ID BSport Reformers",
+            "name": "id_bsport_reformers",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_69ca980c6502a",
+            "label": "Calendrier BSport Reformers",
+            "name": "bsport_reformers",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 1,
             "placeholder": ""
         },
         {
@@ -350,6 +411,30 @@
                     "multiple": 0,
                     "allow_null": 0,
                     "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_69ca9a83bd5ff",
+                    "label": "Planning Reformers",
+                    "name": "planning_reformers",
+                    "aria-label": "",
+                    "type": "page_link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "allow_archives": 0,
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0
                 }
             ]
         }
@@ -372,5 +457,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1744883211
+    "display_title": "",
+    "modified": 1774885519
 }

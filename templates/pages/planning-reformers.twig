@@ -5,7 +5,7 @@
     {# Hero #}
     <section class="pb-section lg:pt-16">
         <div class="container text-center">
-            <h1 class="font-titling-display text-terracotta text-h1 leading-none mb-4">Planning <br>Pilates Reformers</h1>
+            <h1 class="font-titling-display text-terracotta text-h1 leading-none mb-4">Planning <br>Pilates Reformer</h1>
             <p class="md:w-2/3 xl:w-1/2 md:mx-auto">Consultez notre planning hebdomadaire pour trouver les cours qui s'intègrent parfaitement à votre emploi du temps et à vos besoins.</p>
         </div>
         {# Mandala #}
@@ -13,34 +13,36 @@
     </section>
 
     {# Planning #}
-    {{ include('components/bsport.twig')}}
+    {{ include('components/bsport.twig', {
+        calendar_id: options.id_bsport_reformers
+    })}}
 
     {# Réassurance #}
     <section class="pb-section relative z-10">
         <div class="container">
             <ul class="text-center grid gap-6 md:grid-cols-3 mb-10 lg:mb-16">
                 <li class="flex flex-col items-center gap-6">
-                    <img src="{{theme.uri}}/src/images/illu-yoga-1.svg" alt="Illu Yoga" class="w-40">
+                    <img src="{{theme.uri}}/src/images/illu-reformers-01.svg" alt="Illu Reformers" class="w-40">
                     <p class="lg:px-16">N’hésitez pas à apporter votre propre tapis. Dans le cas contraire, le matériel de yoga est fourni par le studio (sauf ateliers).</p>
                 </li>
                 <li class="flex flex-col items-center gap-6">
-                    <img src="{{theme.uri}}/src/images/illu-yoga-2.svg" alt="Illu Yoga" class="w-40">
+                    <img src="{{theme.uri}}/src/images/illu-reformers-02.svg" alt="Illu Reformers" class="w-40">
                     <p class="lg:px-16">Nous proposons des formules adaptées pour plusieurs séances. Consultez nos <a class="underline lg:hover:text-terracotta" href="{{options.pages.tarifs}}">tarifs</a> ou demandez-nous directement lors de votre visite.</p>
                 </li>
                 <li class="flex flex-col items-center gap-6">
-                    <img src="{{theme.uri}}/src/images/illu-yoga-3.svg" alt="Illu Yoga" class="w-40">
+                    <img src="{{theme.uri}}/src/images/illu-reformers-03.svg" alt="Illu Reformers" class="w-40">
                     <p class="lg:px-16">Une équipe certifiée et passionnée et des cours de 7h45 à 20h30 pour s’adapter à tous les emplois du temps.</p>
                 </li>
             </ul>
             {% if options.bsport %}
                 <div class="flex justify-center">
-                    {% include "components/btns.twig" with {primary: true, text: "Réserver en ligne", url: options.bsport} %}
+                    {% include "components/btns.twig" with {primary: true, text: "Réserver en ligne", url: options.bsport_reformers, target_blank: true} %}
                 </div>
             {% endif %}
         </div>
     </section>
 
 
-    {% include "components/section-footer-link.twig" with {title: "Les cours", subtitle: "Découvrez tous les cours du studio", button_text: "Découvrir", button_url: options.pages.cours} %}
+    {% include "components/section-footer-link.twig" with {title: "Planning Yoga & Pilates", subtitle: "Consulter le planning de Yoga & Pilates", button_text: "Découvrir", button_url: options.pages.planning} %}
     
 {% endblock %}

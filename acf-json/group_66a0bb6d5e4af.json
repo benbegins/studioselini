@@ -87,7 +87,7 @@
         },
         {
             "key": "field_66a0bbe229404",
-            "label": "Fondatrice",
+            "label": "L'histoire du studio Selini",
             "name": "fondatrice",
             "aria-label": "",
             "type": "group",
@@ -167,5 +167,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1721908486
+    "display_title": "",
+    "modified": 1774947597
 }

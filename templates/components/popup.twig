@@ -1,0 +1,12 @@
+<div v-scope="Popup()" @vue:mounted="init($el)" style="display:none" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" @click="close()"></div>
+    <div class="relative bg-light rounded-2xl shadow-2xl max-w-md w-full p-12 text-center">
+        <button @click="close()" aria-label="Fermer" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-black transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <p class="text-body-l font-medium leading-snug"><span class="text-h2">🌙</span> <br>Ouverture de notre nouveau studio de Pilates Reformer le <br><strong>lundi 13 avril</strong> !</p>
+    </div>
+</div>

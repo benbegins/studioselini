@@ -12,6 +12,7 @@ import { Intro } from "./js/components/Intro"
 import { HomeAnim } from "./js/components/HomeAnim"
 import { Gallery } from "./js/components/Gallery"
 import { ToggleElement } from "./js/components/ToggleElement"
+import { Popup } from "./js/components/Popup"
 import Parallax from "./js/components/Parallax"
 import Buttons from "./js/components/buttons"
 
@@ -30,6 +31,7 @@ createApp({
 	HomeAnim,
 	Gallery,
 	ToggleElement,
+	Popup,
 	lenis,
 }).mount()
 

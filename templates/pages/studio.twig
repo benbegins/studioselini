@@ -13,7 +13,7 @@
                 <div class="lg:w-5/6">
                     <h2 class="text-h2 font-titling-headline leading-none mb-2 lg:mb-4">Studio Selíni</h2>
                     {% if post.meta('studio').presentation %}
-                        <p>{{ post.meta('studio').presentation }}</p>
+                        <div class="enriched-text">{{ post.meta('studio').presentation }}</div>
                     {% endif %}
                 </div>
                 {# Image #}
@@ -37,7 +37,7 @@
                 <div class="lg:w-5/6 lg:ml-auto">
                     <h2 class="text-h2 font-titling-headline leading-none mb-2 lg:mb-4">L'histoire du Studio Selíni</h2>
                     {% if post.meta('fondatrice').presentation %}
-                        <p>{{ post.meta('fondatrice').presentation }}</p>
+                        <div class="enriched-text">{{ post.meta('fondatrice').presentation }}</div>
                     {% endif %}
                 </div>
             </div>

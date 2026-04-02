@@ -435,6 +435,30 @@
                     "multiple": 0,
                     "allow_null": 0,
                     "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_69ce2655de181",
+                    "label": "Equipe",
+                    "name": "equipe",
+                    "aria-label": "",
+                    "type": "page_link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "allow_archives": 0,
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0
                 }
             ]
         }
@@ -458,5 +482,7 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1774885519
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1775117917
 }

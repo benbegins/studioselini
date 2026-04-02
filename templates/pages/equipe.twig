@@ -1,0 +1,55 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+    {# Hero #}
+    {% include "components/hero.twig" with {title: "L'équipe", introduction: "Chaque professeur apporte son expertise et son énergie pour faire de votre pratique une expérience enrichissante, bienveillante et dédiée à votre bien-être."} %}
+
+
+    {# Equipe #}
+    <section class="pb-section relative z-10">
+        <div class="container">
+            {# Teachers List #}
+            {% if teachers %}
+                <ul class="grid gap-10 md:grid-cols-2 md:gap-x-6 md:gap-y-16 lg:grid-cols-3">
+                    {% for teacher in teachers %}
+                        {% set tags = teacher.meta('tags')|split(',') %}
+                        <li id="{{teacher.slug}}" v-scope="{ expanded: false }">
+                            <div class="w-full aspect-square overflow-hidden rounded-2xl">
+                                {% if teacher.thumbnail %}
+                                    {{ function('wp_get_attachment_image', teacher.thumbnail.id, 'large', false, {class: "w-full h-full object-cover"}) }}
+                                {% elseif options.placeholder %}
+                                    {{ function('wp_get_attachment_image', options.placeholder.id, 'large', false, {class: "w-full h-full object-cover"}) }}
+                                {% endif %}
+                            </div>
+                            <h3 class="text-body-l mt-6">{{teacher.post_title}}</h3>
+                            {% if tags is not empty %}
+                            <div class="flex items-center gap-1">
+                                {% for tag in tags %}
+                                    <span class="leading-tight font-sans uppercase text-btn text-white bg-black rounded-[3px] px-1 pt-1 pb-0.5">{{tag}}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            {% if teacher.meta('presentation') %}
+                                {% set presentation = teacher.meta('presentation') %}
+                                {% if presentation|length > 350 %}
+                                    <p class="mt-4">
+                                        <span v-if="!expanded">{{presentation|slice(0, 350)}}...</span>
+                                        <span v-else>{{presentation}}</span>
+                                        <button @click="expanded = !expanded" class="underline lg:hover:text-terracotta text-left" v-text="expanded ? 'Voir moins' : 'Voir plus'"></button>
+                                    </p>
+                                {% else %}
+                                    <p class="mt-4">{{presentation}}</p>
+                                {% endif %}
+                            {% endif %}
+                            
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </section>
+
+    {% include "components/section-footer-link.twig" with {title: "Cours", subtitle: "Découvrir nos cours de Yoga, Pilates mat & Reformer", button_text: "Consulter", button_url: options.pages.cours} %}
+
+{% endblock %}

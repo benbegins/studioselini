@@ -14,9 +14,8 @@
                 </div>
                 
                 <div class="flex gap-2 justify-center items-center mt-4 flex-wrap">
-                    {% if studio_page_url %}
-                        {% include "components/btns.twig" with {secondary: true, text: "Découvrir le studio", url: options.pages.studio} %}
-                    {% endif %}
+                    {% include "components/btns.twig" with {primary: true, text: "Réservation Yoga & Pilates mat", url: options.pages.planning} %}
+                    {% include "components/btns.twig" with {secondary: true, text: "Réservation Reformer", url: options.pages.planning_reformers} %}
                 </div>
 
                 <div class="flex justify-center pointer-events-none relative z-10">

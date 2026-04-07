@@ -43,6 +43,7 @@ export default {
 			},
 			spacing: {
 				section: "clamp(5rem, 3.5915rem + 6.0094vw, 9rem)",
+				"section-sm": "clamp(2.5rem, 1.7958rem + 3.0047vw, 4.5rem)",
 			},
 			transitionTimingFunction: {
 				smooth: "cubic-bezier(0.7,0,0.45,1)",

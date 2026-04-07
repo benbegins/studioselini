@@ -7,15 +7,16 @@
         <div class="container overflow-hidden relative z-10">
             <div class="text-center">
 
-                <div class="leading-none text-terracotta font-titling-subhead">
-                    <p class="text-body-m sm:text-body-xl">Pratiquer le yoga, le Pilates ou le Reformer</p>
-                    <div class="font-titling-display mt-1 text-h1mobile sm:text-h1 sm:mt-2" v-scope="HomeAnim()" @vue:mounted="init($el)">
-                    </div>
+                <div class="leading-none text-terracotta font-titling-subhead pt-section-sm">
+                    <p class="text-body-m sm:text-body-xl">Votre studio de bien-être à Colombes (92)</p>
+                    <h1 class="font-titling-display text-h1mobile sm:text-h1">Yoga, Pilates & Reformer</h1>
+                    {# <div class="font-titling-display mt-1 text-h1mobile sm:text-h1 sm:mt-2" v-scope="HomeAnim()" @vue:mounted="init($el)">
+                    </div> #}
                 </div>
                 
                 <div class="flex gap-2 justify-center items-center mt-4 flex-wrap">
-                    {% include "components/btns.twig" with {primary: true, text: "Réservation Yoga & Pilates mat", url: options.pages.planning} %}
-                    {% include "components/btns.twig" with {secondary: true, text: "Réservation Reformer", url: options.pages.planning_reformers} %}
+                    {% include "components/btns.twig" with {primary: true, text: "Yoga & Pilates mat", url: options.pages.planning} %}
+                    {% include "components/btns.twig" with {secondary: true, text: "Pilates Reformer", url: options.pages.planning_reformers} %}
                 </div>
 
                 <div class="flex justify-center pointer-events-none relative z-10">

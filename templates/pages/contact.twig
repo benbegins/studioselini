@@ -3,9 +3,10 @@
 {% block content %}
 
     <section class="pb-section lg:pt-16">
-        <div class="container grid gap-16 lg:gap-6 lg:grid-cols-2 relative z-20">
+        <div class="container lg:w-1/2 lg:mx-auto relative z-20">
             <div class="flex flex-col text-center items-center lg:items-start lg:text-left lg:w-5/6">
                 <h1 class="font-titling-display text-terracotta text-h1 leading-none mb-4">Contact</h1>
+
                 <div class="enriched-text">
                     <h2>Prêt(e) à prendre du temps pour vous ?</h2>
 
@@ -14,9 +15,33 @@
                     <p>📞 Cours privés sur mesure : contactez-nous au <a href="tel:0661335408">06 61 33 54 08</a>.</p>
                     <p>Bienvenue au studio Selíni.</p>
                 </div>
+
+                <div class="mt-6 text-btn font-sans uppercase grid gap-2 md:grid-cols-3 md:gap-6">
+                    <div class="flex flex-col">
+                        {% if options.email %}
+                            <p><a href="mailto:{{options.email}}" class="hover:opacity-70">{{options.email}}</a></p>
+                        {% endif %}
+                        {% if options.phone %}
+                            <p>{{options.phone}}</p>
+                        {% endif %}
+                    </div>
+                    <div class="flex flex-col">
+                        {% if options.adress.street %}
+                            <p>{{options.adress.street}}</p>
+                        {% endif %}
+                        {% if options.adress.zip_code or options.adress.city %}
+                            <p>{{options.adress.zip_code}} {{options.adress.city}}</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        {% if options.instagram %}
+                            <p><a href="{{options.instagram}}" class="hover:opacity-70" target="_blank">Instagram</a></p>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
             <div>
-                <div v-scope="Contact()">
+                {# <div v-scope="Contact()">
                     <form class="grid gap-4" @submit.prevent="submit">
                         <div>
                             <label for="name">Nom</label>
@@ -49,31 +74,9 @@
                             <p>Votre message a été envoyé. Nous vous recontacterons très prochainement.</p>
                         </div>
                     </form>
-                </div>
+                </div> #}
 
-                <div class="mt-16 text-btn font-sans uppercase grid gap-2 md:grid-cols-3 md:gap-6">
-                    <div class="flex flex-col">
-                        {% if options.email %}
-                            <p><a href="mailto:{{options.email}}" class="hover:opacity-70">{{options.email}}</a></p>
-                        {% endif %}
-                        {% if options.phone %}
-                            <p>{{options.phone}}</p>
-                        {% endif %}
-                    </div>
-                    <div class="flex flex-col">
-                        {% if options.adress.street %}
-                            <p>{{options.adress.street}}</p>
-                        {% endif %}
-                        {% if options.adress.zip_code or options.adress.city %}
-                            <p>{{options.adress.zip_code}} {{options.adress.city}}</p>
-                        {% endif %}
-                    </div>
-                    <div>
-                        {% if options.instagram %}
-                            <p><a href="{{options.instagram}}" class="hover:opacity-70" target="_blank">Instagram</a></p>
-                        {% endif %}
-                    </div>
-                </div>
+                
             </div>
         </div>
         {# Mandala #}
